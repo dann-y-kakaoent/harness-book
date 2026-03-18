@@ -21,6 +21,8 @@ book-planner가 목차를 설계했고, chapter-writer가 본문을 집필했고
 
 이 챕터에서는 이 하네스의 전체 구조를 해부한다. Chapter 3에서 배운 패턴이 실전에서 어떻게 조합되는지, Chapter 4~6에서 배운 에이전트/스킬/오케스트레이터 작성법이 실제로 어떻게 적용되었는지를 하나씩 확인한다.
 
+<!-- INFOGRAPHIC: infographic-ch07-book-writer-architecture.svg -->
+
 ---
 
 ### book-writer 하네스 전체 구조

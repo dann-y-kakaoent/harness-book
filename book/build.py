@@ -28,25 +28,15 @@ CHAPTER_FILES = [
     "ch12-design-your-own.md",
 ]
 
-# Map SVG files to chapters
-SVG_MAP = {
-    "ch01": "infographic-ch01-agent-vs-skill.svg",
-    "ch02": "infographic-ch02-harness-overview.svg",
-    "ch03": "infographic-ch03-architecture-patterns.svg",
-    "ch06": "infographic-ch06-orchestrator-flow.svg",
-    "ch07": "infographic-ch07-book-writer-architecture.svg",
-    "ch08": "infographic-ch08-fanout-fanin-flow.svg",
-    "ch12": "infographic-ch12-design-process.svg",
-}
-
+# SVG title map (filename -> display title)
 SVG_TITLES = {
-    "ch01": "Agent vs Skill 비교 다이어그램",
-    "ch02": "하네스 구성 요소 전체 맵",
-    "ch03": "4가지 패턴 흐름도 + 선택 가이드",
-    "ch06": "오케스트레이터 실행 흐름도",
-    "ch07": "book-writer 하네스 전체 아키텍처",
-    "ch08": "팬아웃/팬인 데이터 흐름도",
-    "ch12": "하네스 설계 전체 프로세스 요약",
+    "infographic-ch01-agent-vs-skill.svg": "Agent vs Skill 비교 다이어그램",
+    "infographic-ch02-harness-overview.svg": "하네스 구성 요소 전체 맵",
+    "infographic-ch03-architecture-patterns.svg": "4가지 패턴 흐름도 + 선택 가이드",
+    "infographic-ch06-orchestrator-flow.svg": "오케스트레이터 실행 흐름도",
+    "infographic-ch07-book-writer-architecture.svg": "book-writer 하네스 전체 아키텍처",
+    "infographic-ch08-fanout-fanin-flow.svg": "팬아웃/팬인 데이터 흐름도",
+    "infographic-ch12-design-process.svg": "하네스 설계 전체 프로세스 요약",
 }
 
 
@@ -56,22 +46,27 @@ def read_svg(filename: str) -> str:
 
 
 def build_combined_markdown() -> str:
-    """Combine all chapters with SVG insertions into a single markdown."""
+    """Combine all chapters into a single markdown (without SVG)."""
     parts = []
     for ch_file in CHAPTER_FILES:
-        ch_key = ch_file[:4]  # e.g., "ch01"
         content = (CHAPTERS_DIR / ch_file).read_text(encoding="utf-8")
         parts.append(content)
-
-        # Insert SVG after chapter content if mapped
-        if ch_key in SVG_MAP:
-            svg_content = read_svg(SVG_MAP[ch_key])
-            title = SVG_TITLES.get(ch_key, "인포그래픽")
-            parts.append(f"\n\n### 인포그래픽: {title}\n\n{svg_content}\n\n")
-
         parts.append("\n\n---\n\n")
 
     return "\n".join(parts)
+
+
+def replace_infographic_markers(html: str) -> str:
+    """Replace <!-- INFOGRAPHIC: filename.svg --> markers with actual SVG content."""
+    import re
+
+    def replacer(match):
+        filename = match.group(1).strip()
+        svg_content = read_svg(filename)
+        title = SVG_TITLES.get(filename, "인포그래픽")
+        return f'<h3>인포그래픽: {title}</h3>\n{svg_content}'
+
+    return re.sub(r'<!--\s*INFOGRAPHIC:\s*(.+?)\s*-->', replacer, html)
 
 
 def build_pdf_html(combined_md: str) -> str:
@@ -102,6 +97,7 @@ def build_pdf():
     print("Building PDF...")
     combined_md = build_combined_markdown()
     body_html = build_pdf_html(combined_md)
+    body_html = replace_infographic_markers(body_html)
 
     # Read all SVGs for inline embedding (already in body_html via markdown)
     cover_html = """
@@ -272,7 +268,8 @@ hr {{
     margin: 2em 0;
 }}
 svg {{
-    max-width: 100%;
+    width: 100%;
+    max-width: 800px;
     height: auto;
     display: block;
     margin: 1.5em auto;
@@ -325,12 +322,6 @@ def build_web():
         first_line = content.strip().split("\n")[0]
         title = first_line.lstrip("# ").strip()
 
-        # Add SVG if mapped
-        if ch_key in SVG_MAP:
-            svg_content = read_svg(SVG_MAP[ch_key])
-            svg_title = SVG_TITLES.get(ch_key, "인포그래픽")
-            content += f"\n\n### 인포그래픽: {svg_title}\n\n{svg_content}\n\n"
-
         # Convert to HTML
         result = subprocess.run(
             [
@@ -345,7 +336,10 @@ def build_web():
             text=True,
         )
         ch_html = result.stdout
-        ch_id = f"chapter-{i+1}"
+
+        # Replace INFOGRAPHIC markers with actual SVG content
+        ch_html = replace_infographic_markers(ch_html)
+        ch_id = ch_key  # ch00, ch01, ... 파일명 기반 ID
         chapters_html.append(f'<section id="{ch_id}" class="chapter">{ch_html}</section>')
         short_title = title.split(":")[0] if ":" in title else title
         toc_items.append(f'<a href="#{ch_id}" onclick="showChapter({i})">{short_title}</a>')
@@ -596,7 +590,8 @@ strong {{
     color: var(--accent);
 }}
 svg {{
-    max-width: 100%;
+    width: 100%;
+    max-width: 800px;
     height: auto;
     display: block;
     margin: 1.5em auto;

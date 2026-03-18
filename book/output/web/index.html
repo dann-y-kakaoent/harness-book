@@ -241,7 +241,8 @@ strong {
     color: var(--accent);
 }
 svg {
-    max-width: 100%;
+    width: 100%;
+    max-width: 800px;
     height: auto;
     display: block;
     margin: 1.5em auto;
@@ -316,26 +317,26 @@ svg {
         <p>Claude Code Agent + Skill 자동화</p>
     </div>
     <nav id="toc">
-        <a href="#chapter-1" onclick="showChapter(0)">Chapter 0</a>
-<a href="#chapter-2" onclick="showChapter(1)">Chapter 1</a>
-<a href="#chapter-3" onclick="showChapter(2)">Chapter 2</a>
-<a href="#chapter-4" onclick="showChapter(3)">Chapter 3</a>
-<a href="#chapter-5" onclick="showChapter(4)">Chapter 4</a>
-<a href="#chapter-6" onclick="showChapter(5)">Chapter 5</a>
-<a href="#chapter-7" onclick="showChapter(6)">Chapter 6</a>
-<a href="#chapter-8" onclick="showChapter(7)">Chapter 7</a>
-<a href="#chapter-9" onclick="showChapter(8)">Chapter 8</a>
-<a href="#chapter-10" onclick="showChapter(9)">Chapter 9</a>
-<a href="#chapter-11" onclick="showChapter(10)">Chapter 10</a>
-<a href="#chapter-12" onclick="showChapter(11)">Chapter 11</a>
-<a href="#chapter-13" onclick="showChapter(12)">Chapter 12</a>
+        <a href="#ch00" onclick="showChapter(0)">Chapter 0</a>
+<a href="#ch01" onclick="showChapter(1)">Chapter 1</a>
+<a href="#ch02" onclick="showChapter(2)">Chapter 2</a>
+<a href="#ch03" onclick="showChapter(3)">Chapter 3</a>
+<a href="#ch04" onclick="showChapter(4)">Chapter 4</a>
+<a href="#ch05" onclick="showChapter(5)">Chapter 5</a>
+<a href="#ch06" onclick="showChapter(6)">Chapter 6</a>
+<a href="#ch07" onclick="showChapter(7)">Chapter 7</a>
+<a href="#ch08" onclick="showChapter(8)">Chapter 8</a>
+<a href="#ch09" onclick="showChapter(9)">Chapter 9</a>
+<a href="#ch10" onclick="showChapter(10)">Chapter 10</a>
+<a href="#ch11" onclick="showChapter(11)">Chapter 11</a>
+<a href="#ch12" onclick="showChapter(12)">Chapter 12</a>
     </nav>
     <div class="sidebar-footer">
         <button class="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
     </div>
 </aside>
 <main class="main">
-    <section id="chapter-1" class="chapter"><h1 id="chapter-0-하네스-한눈에-보기">Chapter 0: 하네스 한눈에 보기</h1>
+    <section id="ch00" class="chapter"><h1 id="chapter-0-하네스-한눈에-보기">Chapter 0: 하네스 한눈에 보기</h1>
 <blockquote>
 <p>이 챕터는 책 전체의 핵심을 3분 안에 전달한다. Agent와 Skill의 기본 개념을 이미 알고 있다면, 여기서 하네스의 전체 그림을 파악하고 Part 2(Chapter 4)부터 바로 시작할 수 있다.</p>
 </blockquote>
@@ -361,6 +362,94 @@ svg {
   최종 결과</code></pre>
 <p>에이전트는 <strong>“누가 하는가”</strong> — 전문가의 역할과 원칙을 정의한다. 스킬은 <strong>“어떻게 하는가”</strong> — 작업의 절차와 규칙을 정의한다. 오케스트레이터 스킬은 <strong>“어떤 순서로 하는가”</strong> — 에이전트 팀의 실행 흐름을 정의한다.</p>
 <p>이 세 요소가 <code>.claude/</code> 디렉토리 안에 마크다운 파일로 존재한다. 그것이 하네스의 전부다.</p>
+<h3>인포그래픽: 하네스 구성 요소 전체 맵</h3>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <filter id="shadow2" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-opacity="0.1"/>
+    </filter>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7f8c8d"/>
+    </marker>
+    <marker id="arrMeta" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#8e44ad"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="600" fill="#f8f9fa" rx="12"/>
+
+  <!-- Title -->
+  <text x="400" y="48" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#2c3e50">하네스 구성 요소 전체 맵</text>
+  <line x1="270" y1="60" x2="530" y2="60" stroke="#bdc3c7" stroke-width="2"/>
+
+  <!-- Harness outer box -->
+  <rect x="100" y="85" width="600" height="310" rx="16" fill="none" stroke="#2c3e50" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="120" y="108" font-family="sans-serif" font-size="13" fill="#7f8c8d" font-weight="bold">HARNESS</text>
+
+  <!-- Element 1: Agent Team -->
+  <rect x="130" y="125" width="170" height="150" rx="14" fill="#a8d8ea" filter="url(#shadow2)"/>
+  <text x="215" y="155" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">에이전트 팀</text>
+
+  <!-- Agent icons -->
+  <circle cx="170" cy="200" r="16" fill="#5ba4cf"/>
+  <text x="170" y="205" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white">A1</text>
+  <circle cx="215" cy="200" r="16" fill="#5ba4cf"/>
+  <text x="215" y="205" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white">A2</text>
+  <circle cx="260" cy="200" r="16" fill="#5ba4cf"/>
+  <text x="260" y="205" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white">A3</text>
+
+  <text x="215" y="248" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#34495e">역할 분담된</text>
+  <text x="215" y="264" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#34495e">전문가 에이전트들</text>
+
+  <!-- Element 2: Orchestrator Skill -->
+  <rect x="320" y="125" width="170" height="150" rx="14" fill="#ffd6a5" filter="url(#shadow2)"/>
+  <text x="405" y="150" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2c3e50">오케스트레이터</text>
+  <text x="405" y="170" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2c3e50">스킬</text>
+
+  <!-- Orchestrator flow icon -->
+  <rect x="365" y="188" width="80" height="14" rx="7" fill="#e8943a" opacity="0.6"/>
+  <rect x="365" y="208" width="80" height="14" rx="7" fill="#e8943a" opacity="0.7"/>
+  <rect x="365" y="228" width="80" height="14" rx="7" fill="#e8943a" opacity="0.8"/>
+  <text x="405" y="199" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Phase 1</text>
+  <text x="405" y="219" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Phase 2</text>
+  <text x="405" y="239" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Phase 3</text>
+
+  <text x="405" y="264" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#34495e">실행 흐름 제어</text>
+
+  <!-- Element 3: Directory Structure -->
+  <rect x="510" y="125" width="170" height="150" rx="14" fill="#c3e6cb" filter="url(#shadow2)"/>
+  <text x="595" y="150" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2c3e50">디렉토리</text>
+  <text x="595" y="170" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2c3e50">구조</text>
+
+  <!-- Directory tree icon -->
+  <text x="560" y="200" font-family="monospace" font-size="11" fill="#2d6a4f">.claude/</text>
+  <text x="575" y="216" font-family="monospace" font-size="11" fill="#2d6a4f">agents/</text>
+  <text x="575" y="232" font-family="monospace" font-size="11" fill="#2d6a4f">skills/</text>
+  <text x="560" y="248" font-family="monospace" font-size="11" fill="#2d6a4f">output/</text>
+  <text x="560" y="264" font-family="monospace" font-size="11" fill="#2d6a4f">SKILL.md</text>
+
+  <!-- Connecting arrows between elements -->
+  <line x1="300" y1="200" x2="318" y2="200" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="490" y1="200" x2="508" y2="200" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Meta Skill: Generator -->
+  <rect x="230" y="440" width="340" height="80" rx="20" fill="#d4b5e5" filter="url(#shadow2)"/>
+  <text x="400" y="475" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#6c3483">메타 스킬</text>
+  <text x="400" y="500" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#6c3483">하네스 3요소를 자동 생성</text>
+
+  <!-- Arrows from meta skill to each element -->
+  <path d="M310,440 Q215,395 215,280" fill="none" stroke="#8e44ad" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrMeta)"/>
+  <path d="M400,440 L400,280" fill="none" stroke="#8e44ad" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrMeta)"/>
+  <path d="M490,440 Q595,395 595,280" fill="none" stroke="#8e44ad" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrMeta)"/>
+
+  <!-- Labels on arrows -->
+  <text x="215" y="360" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#8e44ad">생성</text>
+  <text x="415" y="360" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#8e44ad">생성</text>
+  <text x="595" y="360" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#8e44ad">생성</text>
+
+  <!-- Bottom note -->
+  <text x="400" y="565" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#95a5a6">메타 스킬 하나로 전체 하네스를 자동 구축</text>
+</svg>
 <hr />
 <h2 id="실제-동작-예시-이-책이-만들어진-방법">실제 동작 예시: 이 책이 만들어진 방법</h2>
 <p>이 책 자체가 하네스로 만들어졌다. “12챕터 기술서를 집필해줘”라는 요청 하나로, 5명의 에이전트가 협업하여 259페이지 PDF를 만들어냈다.</p>
@@ -426,6 +515,117 @@ Phase 5: [book-publisher]       → PDF 259p + 웹 뷰어</code></pre>
     └── book-writer/            # 오케스트레이터 스킬
         └── SKILL.md</code></pre>
 <p>마크다운 파일 6개. 이것이 5명의 전문가 팀과 지휘자를 만들어낸 전부다.</p>
+<h3>인포그래픽: book-writer 하네스 전체 아키텍처</h3>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <filter id="sh7" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+    <marker id="a7" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#555"/>
+    </marker>
+    <marker id="a7w" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="white"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="600" fill="#f8f9fa" rx="12"/>
+
+  <text x="400" y="38" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2c3e50">book-writer 하네스 아키텍처</text>
+
+  <!-- Agent team row -->
+  <text x="400" y="70" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7f8c8d">5명의 전문가 에이전트</text>
+
+  <!-- Agents -->
+  <rect x="30" y="85" width="130" height="65" rx="10" fill="#a8d8ea" filter="url(#sh7)"/>
+  <circle cx="60" cy="105" r="12" fill="#5ba4cf"/>
+  <text x="60" y="109" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">1</text>
+  <text x="105" y="108" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2c3e50">기획자</text>
+  <text x="95" y="140" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">목차/구조 설계</text>
+
+  <rect x="175" y="85" width="130" height="65" rx="10" fill="#ffd6a5" filter="url(#sh7)"/>
+  <circle cx="205" cy="105" r="12" fill="#e8943a"/>
+  <text x="205" y="109" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">2</text>
+  <text x="250" y="108" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2c3e50">리서처</text>
+  <text x="240" y="140" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">자료 조사/분석</text>
+
+  <rect x="320" y="85" width="130" height="65" rx="10" fill="#c3e6cb" filter="url(#sh7)"/>
+  <circle cx="350" cy="105" r="12" fill="#27ae60"/>
+  <text x="350" y="109" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">3</text>
+  <text x="395" y="108" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2c3e50">작가</text>
+  <text x="385" y="140" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">원고 집필</text>
+
+  <rect x="465" y="85" width="130" height="65" rx="10" fill="#f5cba7" filter="url(#sh7)"/>
+  <circle cx="495" cy="105" r="12" fill="#e67e22"/>
+  <text x="495" y="109" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">4</text>
+  <text x="540" y="108" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2c3e50">편집자</text>
+  <text x="530" y="140" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">교정/교열</text>
+
+  <rect x="610" y="85" width="130" height="65" rx="10" fill="#d5a6e6" filter="url(#sh7)"/>
+  <circle cx="640" cy="105" r="12" fill="#8e44ad"/>
+  <text x="640" y="109" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">5</text>
+  <text x="685" y="108" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2c3e50">검수자</text>
+  <text x="675" y="140" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">품질 검증</text>
+
+  <!-- Phase flow area -->
+  <rect x="40" y="175" width="720" height="400" rx="14" fill="white" filter="url(#sh7)" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="70" y="200" font-family="sans-serif" font-size="13" font-weight="bold" fill="#7f8c8d">워크플로우: 파이프라인 + 생성-검증</text>
+
+  <!-- Phase 1 -->
+  <rect x="70" y="215" width="660" height="60" rx="10" fill="#e8f4fd"/>
+  <text x="90" y="240" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2980b9">Phase 1: 기획</text>
+  <text x="90" y="260" font-family="sans-serif" font-size="11" fill="#555">기획자가 목차와 챕터 구조 설계</text>
+  <circle cx="690" cy="245" r="14" fill="#5ba4cf"/>
+  <text x="690" y="249" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white">기획</text>
+
+  <!-- Arrow -->
+  <line x1="400" y1="275" x2="400" y2="290" stroke="#bdc3c7" stroke-width="2" marker-end="url(#a7)"/>
+
+  <!-- Phase 2 -->
+  <rect x="70" y="293" width="660" height="60" rx="10" fill="#fef9e7"/>
+  <text x="90" y="318" font-family="sans-serif" font-size="13" font-weight="bold" fill="#d4a017">Phase 2: 리서치</text>
+  <text x="90" y="338" font-family="sans-serif" font-size="11" fill="#555">리서처가 챕터별 자료 조사</text>
+  <circle cx="690" cy="323" r="14" fill="#e8943a"/>
+  <text x="690" y="327" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white">리서</text>
+
+  <line x1="400" y1="353" x2="400" y2="368" stroke="#bdc3c7" stroke-width="2" marker-end="url(#a7)"/>
+
+  <!-- Phase 3: Generate-Verify loop -->
+  <rect x="70" y="371" width="660" height="70" rx="10" fill="#eafaf1"/>
+  <text x="90" y="396" font-family="sans-serif" font-size="13" font-weight="bold" fill="#27ae60">Phase 3: 집필</text>
+  <text x="90" y="416" font-family="sans-serif" font-size="11" fill="#555">작가가 원고 집필</text>
+
+  <!-- Generate-Verify indicator -->
+  <rect x="480" y="384" width="100" height="22" rx="6" fill="#27ae60"/>
+  <text x="530" y="399" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">생성</text>
+  <rect x="590" y="384" width="55" height="22" rx="6" fill="#e74c3c"/>
+  <text x="618" y="399" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">검증</text>
+  <path d="M618,408 Q618,420 555,420 Q505,420 530,408" fill="none" stroke="#e74c3c" stroke-width="1.2" stroke-dasharray="3,2"/>
+  <circle cx="690" cy="401" r="14" fill="#27ae60"/>
+  <text x="690" y="405" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white">작가</text>
+
+  <line x1="400" y1="441" x2="400" y2="456" stroke="#bdc3c7" stroke-width="2" marker-end="url(#a7)"/>
+
+  <!-- Phase 4 -->
+  <rect x="70" y="459" width="660" height="50" rx="10" fill="#fdf2e9"/>
+  <text x="90" y="482" font-family="sans-serif" font-size="13" font-weight="bold" fill="#e67e22">Phase 4: 편집</text>
+  <text x="90" y="498" font-family="sans-serif" font-size="11" fill="#555">편집자가 교정/교열</text>
+  <rect x="480" y="472" width="100" height="22" rx="6" fill="#e67e22"/>
+  <text x="530" y="487" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">생성</text>
+  <rect x="590" y="472" width="55" height="22" rx="6" fill="#e74c3c"/>
+  <text x="618" y="487" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">검증</text>
+  <circle cx="690" cy="484" r="14" fill="#e67e22"/>
+  <text x="690" y="488" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white">편집</text>
+
+  <line x1="400" y1="509" x2="400" y2="523" stroke="#bdc3c7" stroke-width="2" marker-end="url(#a7)"/>
+
+  <!-- Phase 5 -->
+  <rect x="70" y="526" width="660" height="40" rx="10" fill="#ebdef0"/>
+  <text x="90" y="551" font-family="sans-serif" font-size="13" font-weight="bold" fill="#8e44ad">Phase 5: 최종 검수</text>
+  <text x="310" y="551" font-family="sans-serif" font-size="11" fill="#555">검수자가 전체 품질 검증</text>
+  <circle cx="690" cy="546" r="14" fill="#8e44ad"/>
+  <text x="690" y="550" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white">검수</text>
+</svg>
 <hr />
 <h2 id="하네스의-핵심-아이디어-3가지">하네스의 핵심 아이디어 3가지</h2>
 <p><strong>1. 복잡한 작업은 팀으로 나눈다.</strong> 한 에이전트에게 모든 것을 맡기면 역할 충돌, 컨텍스트 부족, 병렬 처리 불가의 벽에 부딪힌다. 전문성별로 에이전트를 나누면 각자 자기 역할에 집중할 수 있다.</p>
@@ -479,7 +679,7 @@ Phase 5: [book-publisher]       → PDF 259p + 웹 뷰어</code></pre>
 <hr />
 <p>다음 챕터부터는 이 전체 그림을 구성하는 각 조각을 하나씩 다룬다. Chapter 1에서는 에이전트와 스킬의 기본 개념과 파일 구조를 살펴본다.</p>
 </section>
-<section id="chapter-2" class="chapter"><h1 id="chapter-1-claude-code의-agent와-skill-이해하기">Chapter 1: Claude Code의 Agent와 Skill 이해하기</h1>
+<section id="ch01" class="chapter"><h1 id="chapter-1-claude-code의-agent와-skill-이해하기">Chapter 1: Claude Code의 Agent와 Skill 이해하기</h1>
 <h2 id="이-챕터에서-배울-것">이 챕터에서 배울 것</h2>
 <ul>
 <li>Claude Code의 확장 구조인 <code>.claude/</code> 디렉토리가 어떻게 구성되는지</li>
@@ -575,6 +775,99 @@ Phase 5: [book-publisher]       → PDF 259p + 웹 뷰어</code></pre>
 </tr>
 </tbody>
 </table>
+<h3>인포그래픽: Agent vs Skill 비교 다이어그램</h3>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="agentGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8d8ea;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#7ec8e3;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="skillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd6a5;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#ffb347;stop-opacity:1"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" rx="12"/>
+
+  <!-- Title -->
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-size="26" font-weight="bold" fill="#2c3e50">Agent vs Skill</text>
+  <line x1="320" y1="64" x2="480" y2="64" stroke="#bdc3c7" stroke-width="2"/>
+
+  <!-- Agent Card -->
+  <rect x="60" y="100" width="300" height="400" rx="16" fill="url(#agentGrad)" filter="url(#shadow)"/>
+  <rect x="60" y="100" width="300" height="60" rx="16" fill="#5ba4cf"/>
+  <rect x="60" y="140" width="300" height="20" fill="#5ba4cf"/>
+  <text x="210" y="140" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="white">Agent</text>
+  <text x="210" y="195" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#2c3e50" font-weight="bold">"누가 하는가"</text>
+
+  <!-- Agent icon: person silhouette -->
+  <circle cx="210" cy="250" r="22" fill="#4a90a4" opacity="0.8"/>
+  <ellipse cx="210" cy="295" rx="30" ry="18" fill="#4a90a4" opacity="0.8"/>
+
+  <text x="210" y="340" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#34495e">전문가 페르소나</text>
+  <text x="210" y="362" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#34495e">역할, 성격, 판단 기준 정의</text>
+
+  <!-- Agent file path -->
+  <rect x="100" y="390" width="220" height="36" rx="8" fill="white" opacity="0.7"/>
+  <text x="210" y="414" text-anchor="middle" font-family="monospace" font-size="12" fill="#5ba4cf">.claude/agents/*.md</text>
+
+  <!-- Agent keywords -->
+  <rect x="105" y="440" width="70" height="26" rx="13" fill="white" opacity="0.6"/>
+  <text x="140" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#4a90a4">역할</text>
+  <rect x="185" y="440" width="70" height="26" rx="13" fill="white" opacity="0.6"/>
+  <text x="220" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#4a90a4">성격</text>
+  <rect x="265" y="440" width="70" height="26" rx="13" fill="white" opacity="0.6"/>
+  <text x="300" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#4a90a4">전문성</text>
+
+  <!-- Skill Card -->
+  <rect x="440" y="100" width="300" height="400" rx="16" fill="url(#skillGrad)" filter="url(#shadow)"/>
+  <rect x="440" y="100" width="300" height="60" rx="16" fill="#e8943a"/>
+  <rect x="440" y="140" width="300" height="20" fill="#e8943a"/>
+  <text x="590" y="140" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="white">Skill</text>
+  <text x="590" y="195" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#2c3e50" font-weight="bold">"어떻게 하는가"</text>
+
+  <!-- Skill icon: checklist -->
+  <rect x="565" y="228" width="50" height="60" rx="6" fill="#c77a2a" opacity="0.7"/>
+  <line x1="575" y1="244" x2="605" y2="244" stroke="white" stroke-width="2"/>
+  <line x1="575" y1="256" x2="605" y2="256" stroke="white" stroke-width="2"/>
+  <line x1="575" y1="268" x2="605" y2="268" stroke="white" stroke-width="2"/>
+  <polyline points="572,242 575,245 580,240" fill="none" stroke="#a8d8ea" stroke-width="2"/>
+  <polyline points="572,254 575,257 580,252" fill="none" stroke="#a8d8ea" stroke-width="2"/>
+
+  <text x="590" y="316" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#34495e">절차적 가이드</text>
+  <text x="590" y="338" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#34495e">단계별 실행 방법 정의</text>
+
+  <!-- Skill file path -->
+  <rect x="480" y="366" width="220" height="36" rx="8" fill="white" opacity="0.7"/>
+  <text x="590" y="390" text-anchor="middle" font-family="monospace" font-size="11" fill="#e8943a">.claude/skills/*/SKILL.md</text>
+
+  <!-- Skill keywords -->
+  <rect x="485" y="416" width="70" height="26" rx="13" fill="white" opacity="0.6"/>
+  <text x="520" y="434" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#c77a2a">절차</text>
+  <rect x="565" y="416" width="70" height="26" rx="13" fill="white" opacity="0.6"/>
+  <text x="600" y="434" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#c77a2a">도구</text>
+  <rect x="645" y="416" width="70" height="26" rx="13" fill="white" opacity="0.6"/>
+  <text x="680" y="434" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#c77a2a">규칙</text>
+
+  <!-- Center: Relationship arrow -->
+  <line x1="370" y1="280" x2="430" y2="280" stroke="#95a5a6" stroke-width="2" stroke-dasharray="6,4"/>
+  <polygon points="428,274 440,280 428,286" fill="#95a5a6"/>
+  <polygon points="372,274 360,280 372,286" fill="#95a5a6"/>
+  <text x="400" y="310" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#7f8c8d">조합</text>
+
+  <!-- Bottom: Unified concept -->
+  <rect x="200" y="530" width="400" height="50" rx="25" fill="#2c3e50" filter="url(#shadow)"/>
+  <text x="400" y="561" text-anchor="middle" font-family="sans-serif" font-size="15" fill="white">Agent가 Skill을 호출하여 작업 수행</text>
+
+  <!-- Arrows to bottom -->
+  <path d="M210,500 Q210,530 300,545" fill="none" stroke="#5ba4cf" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <path d="M590,500 Q590,530 500,545" fill="none" stroke="#e8943a" stroke-width="2"/>
+</svg>
 <p>왜 분리해야 할까? 하나의 스킬이 여러 에이전트를 조율할 수 있고, 하나의 에이전트가 여러 스킬에서 활용될 수 있기 때문이다. 예를 들어 <code>chapter-writer</code> 에이전트는 <code>book-writer</code> 스킬뿐 아니라, 미래에 만들 <code>blog-writer</code> 스킬에서도 재사용할 수 있다.</p>
 <hr />
 <h3 id="파일-구조-frontmatter와-본문">파일 구조: frontmatter와 본문</h3>
@@ -762,40 +1055,8 @@ Phase 5: [book-publisher]       → PDF 259p + 웹 뷰어</code></pre>
 <ul>
 <li>Chapter 2에서는 이 Agent와 Skill이 <strong>팀으로 묶일 때</strong> 어떤 일이 벌어지는지 다룬다. 단일 에이전트의 한계를 넘어, 여러 에이전트가 협업하는 구조인 <strong>하네스(harness)</strong>의 개념을 소개한다.</li>
 </ul>
-<h3 id="인포그래픽-agent-vs-skill-비교-다이어그램">인포그래픽: Agent vs Skill 비교 다이어그램</h3>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-<p><defs> <linearGradient id="agentGrad" x1="0%" y1="0%" x2="0%" y2="100%"> <stop offset="0%" style="stop-color:#a8d8ea;stop-opacity:1"/> <stop offset="100%" style="stop-color:#7ec8e3;stop-opacity:1"/> </linearGradient> <linearGradient id="skillGrad" x1="0%" y1="0%" x2="0%" y2="100%"> <stop offset="0%" style="stop-color:#ffd6a5;stop-opacity:1"/> <stop offset="100%" style="stop-color:#ffb347;stop-opacity:1"/> </linearGradient> <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%"> <feDropShadow dx="2" dy="3" stdDeviation="4" flood-opacity="0.12"/> </filter> </defs></p>
-<!-- Background -->
-<p><rect width="800" height="600" fill="#f8f9fa" rx="12"/></p>
-<!-- Title -->
-<p><text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-size="26" font-weight="bold" fill="#2c3e50">Agent vs Skill</text> <line x1="320" y1="64" x2="480" y2="64" stroke="#bdc3c7" stroke-width="2"/></p>
-<!-- Agent Card -->
-<p><rect x="60" y="100" width="300" height="400" rx="16" fill="url(#agentGrad)" filter="url(#shadow)"/> <rect x="60" y="100" width="300" height="60" rx="16" fill="#5ba4cf"/> <rect x="60" y="140" width="300" height="20" fill="#5ba4cf"/> <text x="210" y="140" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="white">Agent</text> <text x="210" y="195" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#2c3e50" font-weight="bold">“누가 하는가”</text></p>
-<!-- Agent icon: person silhouette -->
-<p><circle cx="210" cy="250" r="22" fill="#4a90a4" opacity="0.8"/> <ellipse cx="210" cy="295" rx="30" ry="18" fill="#4a90a4" opacity="0.8"/></p>
-<p><text x="210" y="340" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#34495e">전문가 페르소나</text> <text x="210" y="362" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#34495e">역할, 성격, 판단 기준 정의</text></p>
-<!-- Agent file path -->
-<p><rect x="100" y="390" width="220" height="36" rx="8" fill="white" opacity="0.7"/> <text x="210" y="414" text-anchor="middle" font-family="monospace" font-size="12" fill="#5ba4cf">.claude/agents/*.md</text></p>
-<!-- Agent keywords -->
-<p><rect x="105" y="440" width="70" height="26" rx="13" fill="white" opacity="0.6"/> <text x="140" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#4a90a4">역할</text> <rect x="185" y="440" width="70" height="26" rx="13" fill="white" opacity="0.6"/> <text x="220" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#4a90a4">성격</text> <rect x="265" y="440" width="70" height="26" rx="13" fill="white" opacity="0.6"/> <text x="300" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#4a90a4">전문성</text></p>
-<!-- Skill Card -->
-<p><rect x="440" y="100" width="300" height="400" rx="16" fill="url(#skillGrad)" filter="url(#shadow)"/> <rect x="440" y="100" width="300" height="60" rx="16" fill="#e8943a"/> <rect x="440" y="140" width="300" height="20" fill="#e8943a"/> <text x="590" y="140" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="white">Skill</text> <text x="590" y="195" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#2c3e50" font-weight="bold">“어떻게 하는가”</text></p>
-<!-- Skill icon: checklist -->
-<p><rect x="565" y="228" width="50" height="60" rx="6" fill="#c77a2a" opacity="0.7"/> <line x1="575" y1="244" x2="605" y2="244" stroke="white" stroke-width="2"/> <line x1="575" y1="256" x2="605" y2="256" stroke="white" stroke-width="2"/> <line x1="575" y1="268" x2="605" y2="268" stroke="white" stroke-width="2"/> <polyline points="572,242 575,245 580,240" fill="none" stroke="#a8d8ea" stroke-width="2"/> <polyline points="572,254 575,257 580,252" fill="none" stroke="#a8d8ea" stroke-width="2"/></p>
-<p><text x="590" y="316" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#34495e">절차적 가이드</text> <text x="590" y="338" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#34495e">단계별 실행 방법 정의</text></p>
-<!-- Skill file path -->
-<p><rect x="480" y="366" width="220" height="36" rx="8" fill="white" opacity="0.7"/> <text x="590" y="390" text-anchor="middle" font-family="monospace" font-size="11" fill="#e8943a">.claude/skills/*/SKILL.md</text></p>
-<!-- Skill keywords -->
-<p><rect x="485" y="416" width="70" height="26" rx="13" fill="white" opacity="0.6"/> <text x="520" y="434" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#c77a2a">절차</text> <rect x="565" y="416" width="70" height="26" rx="13" fill="white" opacity="0.6"/> <text x="600" y="434" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#c77a2a">도구</text> <rect x="645" y="416" width="70" height="26" rx="13" fill="white" opacity="0.6"/> <text x="680" y="434" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#c77a2a">규칙</text></p>
-<!-- Center: Relationship arrow -->
-<p><line x1="370" y1="280" x2="430" y2="280" stroke="#95a5a6" stroke-width="2" stroke-dasharray="6,4"/> <polygon points="428,274 440,280 428,286" fill="#95a5a6"/> <polygon points="372,274 360,280 372,286" fill="#95a5a6"/> <text x="400" y="310" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#7f8c8d">조합</text></p>
-<!-- Bottom: Unified concept -->
-<p><rect x="200" y="530" width="400" height="50" rx="25" fill="#2c3e50" filter="url(#shadow)"/> <text x="400" y="561" text-anchor="middle" font-family="sans-serif" font-size="15" fill="white">Agent가 Skill을 호출하여 작업 수행</text></p>
-<!-- Arrows to bottom -->
-<path d="M210,500 Q210,530 300,545" fill="none" stroke="#5ba4cf" stroke-width="2" marker-end="url(#arrowBlue)"/> <path d="M590,500 Q590,530 500,545" fill="none" stroke="#e8943a" stroke-width="2"/>
-</svg>
 </section>
-<section id="chapter-3" class="chapter"><h1 id="chapter-2-하네스의-개념과-구성-요소">Chapter 2: 하네스의 개념과 구성 요소</h1>
+<section id="ch02" class="chapter"><h1 id="chapter-2-하네스의-개념과-구성-요소">Chapter 2: 하네스의 개념과 구성 요소</h1>
 <h2 id="이-챕터에서-배울-것">이 챕터에서 배울 것</h2>
 <ul>
 <li>단일 에이전트의 한계가 무엇이며, 왜 팀이 필요한지</li>
@@ -893,6 +1154,94 @@ Phase 5: [book-publisher]       → PDF 259p + 웹 뷰어</code></pre>
 <li><strong>에이전트 간 데이터 흐름</strong>: 산출물이 파일로 어디에 저장되고, 다음 에이전트가 어디서 읽는지</li>
 </ol>
 <p>오케스트레이터 자체도 <code>.claude/skills/</code> 아래의 SKILL.md 파일이다. 다른 스킬과 형식이 같지만, <strong>여러 에이전트를 호출하는 워크플로우</strong>를 담고 있다는 점이 다르다.</p>
+<h3>인포그래픽: 하네스 구성 요소 전체 맵</h3>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <filter id="shadow2" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-opacity="0.1"/>
+    </filter>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7f8c8d"/>
+    </marker>
+    <marker id="arrMeta" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#8e44ad"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="600" fill="#f8f9fa" rx="12"/>
+
+  <!-- Title -->
+  <text x="400" y="48" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#2c3e50">하네스 구성 요소 전체 맵</text>
+  <line x1="270" y1="60" x2="530" y2="60" stroke="#bdc3c7" stroke-width="2"/>
+
+  <!-- Harness outer box -->
+  <rect x="100" y="85" width="600" height="310" rx="16" fill="none" stroke="#2c3e50" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="120" y="108" font-family="sans-serif" font-size="13" fill="#7f8c8d" font-weight="bold">HARNESS</text>
+
+  <!-- Element 1: Agent Team -->
+  <rect x="130" y="125" width="170" height="150" rx="14" fill="#a8d8ea" filter="url(#shadow2)"/>
+  <text x="215" y="155" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">에이전트 팀</text>
+
+  <!-- Agent icons -->
+  <circle cx="170" cy="200" r="16" fill="#5ba4cf"/>
+  <text x="170" y="205" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white">A1</text>
+  <circle cx="215" cy="200" r="16" fill="#5ba4cf"/>
+  <text x="215" y="205" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white">A2</text>
+  <circle cx="260" cy="200" r="16" fill="#5ba4cf"/>
+  <text x="260" y="205" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white">A3</text>
+
+  <text x="215" y="248" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#34495e">역할 분담된</text>
+  <text x="215" y="264" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#34495e">전문가 에이전트들</text>
+
+  <!-- Element 2: Orchestrator Skill -->
+  <rect x="320" y="125" width="170" height="150" rx="14" fill="#ffd6a5" filter="url(#shadow2)"/>
+  <text x="405" y="150" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2c3e50">오케스트레이터</text>
+  <text x="405" y="170" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2c3e50">스킬</text>
+
+  <!-- Orchestrator flow icon -->
+  <rect x="365" y="188" width="80" height="14" rx="7" fill="#e8943a" opacity="0.6"/>
+  <rect x="365" y="208" width="80" height="14" rx="7" fill="#e8943a" opacity="0.7"/>
+  <rect x="365" y="228" width="80" height="14" rx="7" fill="#e8943a" opacity="0.8"/>
+  <text x="405" y="199" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Phase 1</text>
+  <text x="405" y="219" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Phase 2</text>
+  <text x="405" y="239" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Phase 3</text>
+
+  <text x="405" y="264" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#34495e">실행 흐름 제어</text>
+
+  <!-- Element 3: Directory Structure -->
+  <rect x="510" y="125" width="170" height="150" rx="14" fill="#c3e6cb" filter="url(#shadow2)"/>
+  <text x="595" y="150" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2c3e50">디렉토리</text>
+  <text x="595" y="170" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2c3e50">구조</text>
+
+  <!-- Directory tree icon -->
+  <text x="560" y="200" font-family="monospace" font-size="11" fill="#2d6a4f">.claude/</text>
+  <text x="575" y="216" font-family="monospace" font-size="11" fill="#2d6a4f">agents/</text>
+  <text x="575" y="232" font-family="monospace" font-size="11" fill="#2d6a4f">skills/</text>
+  <text x="560" y="248" font-family="monospace" font-size="11" fill="#2d6a4f">output/</text>
+  <text x="560" y="264" font-family="monospace" font-size="11" fill="#2d6a4f">SKILL.md</text>
+
+  <!-- Connecting arrows between elements -->
+  <line x1="300" y1="200" x2="318" y2="200" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="490" y1="200" x2="508" y2="200" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Meta Skill: Generator -->
+  <rect x="230" y="440" width="340" height="80" rx="20" fill="#d4b5e5" filter="url(#shadow2)"/>
+  <text x="400" y="475" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#6c3483">메타 스킬</text>
+  <text x="400" y="500" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#6c3483">하네스 3요소를 자동 생성</text>
+
+  <!-- Arrows from meta skill to each element -->
+  <path d="M310,440 Q215,395 215,280" fill="none" stroke="#8e44ad" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrMeta)"/>
+  <path d="M400,440 L400,280" fill="none" stroke="#8e44ad" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrMeta)"/>
+  <path d="M490,440 Q595,395 595,280" fill="none" stroke="#8e44ad" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrMeta)"/>
+
+  <!-- Labels on arrows -->
+  <text x="215" y="360" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#8e44ad">생성</text>
+  <text x="415" y="360" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#8e44ad">생성</text>
+  <text x="595" y="360" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#8e44ad">생성</text>
+
+  <!-- Bottom note -->
+  <text x="400" y="565" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#95a5a6">메타 스킬 하나로 전체 하네스를 자동 구축</text>
+</svg>
 <hr />
 <h3 id="에이전트-분리-기준-4가지">에이전트 분리 기준 4가지</h3>
 <p>하네스를 설계할 때 가장 어려운 판단은 “이 작업을 별도 에이전트로 분리할 것인가, 기존 에이전트에 맡길 것인가”다. 다음 4가지 기준으로 판단한다.</p>
@@ -1095,41 +1444,8 @@ chapter-writer ──(ch01.md, 완성)──→ book-publisher</code></pre>
 <ul>
 <li>Chapter 3에서는 에이전트 팀의 <strong>4가지 아키텍처 패턴</strong> — 파이프라인, 팬아웃/팬인, 전문가풀, 생성-검증 — 을 다룬다. book-writer 하네스에서 살짝 엿본 이 패턴들을 체계적으로 정리하고, 도메인에 맞는 패턴을 선택하는 기준을 배운다.</li>
 </ul>
-<h3 id="인포그래픽-하네스-구성-요소-전체-맵">인포그래픽: 하네스 구성 요소 전체 맵</h3>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-<p><defs> <filter id="shadow2" x="-5%" y="-5%" width="110%" height="115%"> <feDropShadow dx="2" dy="3" stdDeviation="4" flood-opacity="0.1"/> </filter> <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"> <polygon points="0 0, 10 3.5, 0 7" fill="#7f8c8d"/> </marker> <marker id="arrMeta" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"> <polygon points="0 0, 10 3.5, 0 7" fill="#8e44ad"/> </marker> </defs></p>
-<p><rect width="800" height="600" fill="#f8f9fa" rx="12"/></p>
-<!-- Title -->
-<p><text x="400" y="48" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#2c3e50">하네스 구성 요소 전체 맵</text> <line x1="270" y1="60" x2="530" y2="60" stroke="#bdc3c7" stroke-width="2"/></p>
-<!-- Harness outer box -->
-<p><rect x="100" y="85" width="600" height="310" rx="16" fill="none" stroke="#2c3e50" stroke-width="2" stroke-dasharray="8,4"/> <text x="120" y="108" font-family="sans-serif" font-size="13" fill="#7f8c8d" font-weight="bold">HARNESS</text></p>
-<!-- Element 1: Agent Team -->
-<p><rect x="130" y="125" width="170" height="150" rx="14" fill="#a8d8ea" filter="url(#shadow2)"/> <text x="215" y="155" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">에이전트 팀</text></p>
-<!-- Agent icons -->
-<p><circle cx="170" cy="200" r="16" fill="#5ba4cf"/> <text x="170" y="205" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white">A1</text> <circle cx="215" cy="200" r="16" fill="#5ba4cf"/> <text x="215" y="205" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white">A2</text> <circle cx="260" cy="200" r="16" fill="#5ba4cf"/> <text x="260" y="205" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white">A3</text></p>
-<p><text x="215" y="248" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#34495e">역할 분담된</text> <text x="215" y="264" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#34495e">전문가 에이전트들</text></p>
-<!-- Element 2: Orchestrator Skill -->
-<p><rect x="320" y="125" width="170" height="150" rx="14" fill="#ffd6a5" filter="url(#shadow2)"/> <text x="405" y="150" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2c3e50">오케스트레이터</text> <text x="405" y="170" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2c3e50">스킬</text></p>
-<!-- Orchestrator flow icon -->
-<p><rect x="365" y="188" width="80" height="14" rx="7" fill="#e8943a" opacity="0.6"/> <rect x="365" y="208" width="80" height="14" rx="7" fill="#e8943a" opacity="0.7"/> <rect x="365" y="228" width="80" height="14" rx="7" fill="#e8943a" opacity="0.8"/> <text x="405" y="199" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Phase 1</text> <text x="405" y="219" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Phase 2</text> <text x="405" y="239" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Phase 3</text></p>
-<p><text x="405" y="264" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#34495e">실행 흐름 제어</text></p>
-<!-- Element 3: Directory Structure -->
-<p><rect x="510" y="125" width="170" height="150" rx="14" fill="#c3e6cb" filter="url(#shadow2)"/> <text x="595" y="150" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2c3e50">디렉토리</text> <text x="595" y="170" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2c3e50">구조</text></p>
-<!-- Directory tree icon -->
-<p><text x="560" y="200" font-family="monospace" font-size="11" fill="#2d6a4f">.claude/</text> <text x="575" y="216" font-family="monospace" font-size="11" fill="#2d6a4f">agents/</text> <text x="575" y="232" font-family="monospace" font-size="11" fill="#2d6a4f">skills/</text> <text x="560" y="248" font-family="monospace" font-size="11" fill="#2d6a4f">output/</text> <text x="560" y="264" font-family="monospace" font-size="11" fill="#2d6a4f">SKILL.md</text></p>
-<!-- Connecting arrows between elements -->
-<p><line x1="300" y1="200" x2="318" y2="200" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arr)"/> <line x1="490" y1="200" x2="508" y2="200" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arr)"/></p>
-<!-- Meta Skill: Generator -->
-<p><rect x="230" y="440" width="340" height="80" rx="20" fill="#d4b5e5" filter="url(#shadow2)"/> <text x="400" y="475" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#6c3483">메타 스킬</text> <text x="400" y="500" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#6c3483">하네스 3요소를 자동 생성</text></p>
-<!-- Arrows from meta skill to each element -->
-<p><path d="M310,440 Q215,395 215,280" fill="none" stroke="#8e44ad" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrMeta)"/> <path d="M400,440 L400,280" fill="none" stroke="#8e44ad" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrMeta)"/> <path d="M490,440 Q595,395 595,280" fill="none" stroke="#8e44ad" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrMeta)"/></p>
-<!-- Labels on arrows -->
-<p><text x="215" y="360" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#8e44ad">생성</text> <text x="415" y="360" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#8e44ad">생성</text> <text x="595" y="360" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#8e44ad">생성</text></p>
-<!-- Bottom note -->
-<text x="400" y="565" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#95a5a6">메타 스킬 하나로 전체 하네스를 자동 구축</text>
-</svg>
 </section>
-<section id="chapter-4" class="chapter"><h1 id="chapter-3-4가지-아키텍처-패턴">Chapter 3: 4가지 아키텍처 패턴</h1>
+<section id="ch03" class="chapter"><h1 id="chapter-3-4가지-아키텍처-패턴">Chapter 3: 4가지 아키텍처 패턴</h1>
 <h2 id="이-챕터에서-배울-것">이 챕터에서 배울 것</h2>
 <ul>
 <li>에이전트 팀을 구성하는 4가지 기본 아키텍처 패턴의 구조와 특성</li>
@@ -1183,6 +1499,146 @@ chapter-writer ──(ch01.md, 완성)──→ book-publisher</code></pre>
 </tr>
 </tbody>
 </table>
+<h3>인포그래픽: 4가지 패턴 흐름도 + 선택 가이드</h3>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <filter id="sh3" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+    <marker id="a3" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#555"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="600" fill="#f8f9fa" rx="12"/>
+
+  <text x="400" y="40" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2c3e50">4가지 아키텍처 패턴</text>
+
+  <!-- Pattern 1: Pipeline -->
+  <rect x="20" y="65" width="370" height="115" rx="12" fill="#e8f4fd" filter="url(#sh3)"/>
+  <text x="40" y="90" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2980b9">1. 파이프라인</text>
+  <text x="40" y="107" font-family="sans-serif" font-size="10" fill="#7f8c8d">순차 처리, 단계별 변환</text>
+
+  <rect x="50" y="120" width="60" height="35" rx="8" fill="#5ba4cf"/>
+  <text x="80" y="142" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">A1</text>
+  <line x1="112" y1="137" x2="135" y2="137" stroke="#555" stroke-width="2" marker-end="url(#a3)"/>
+  <rect x="138" y="120" width="60" height="35" rx="8" fill="#5ba4cf"/>
+  <text x="168" y="142" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">A2</text>
+  <line x1="200" y1="137" x2="223" y2="137" stroke="#555" stroke-width="2" marker-end="url(#a3)"/>
+  <rect x="226" y="120" width="60" height="35" rx="8" fill="#5ba4cf"/>
+  <text x="256" y="142" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">A3</text>
+  <line x1="288" y1="137" x2="311" y2="137" stroke="#555" stroke-width="2" marker-end="url(#a3)"/>
+  <rect x="314" y="120" width="60" height="35" rx="8" fill="#3498db"/>
+  <text x="344" y="142" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">결과</text>
+
+  <!-- Pattern 2: Fan-out / Fan-in -->
+  <rect x="410" y="65" width="370" height="115" rx="12" fill="#fef9e7" filter="url(#sh3)"/>
+  <text x="430" y="90" font-family="sans-serif" font-size="14" font-weight="bold" fill="#d4a017">2. 팬아웃 / 팬인</text>
+  <text x="430" y="107" font-family="sans-serif" font-size="10" fill="#7f8c8d">병렬 분배 후 통합</text>
+
+  <rect x="430" y="125" width="50" height="30" rx="8" fill="#f0c040"/>
+  <text x="455" y="145" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">분배</text>
+
+  <line x1="482" y1="132" x2="510" y2="122" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/>
+  <line x1="482" y1="140" x2="510" y2="140" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/>
+  <line x1="482" y1="148" x2="510" y2="158" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/>
+
+  <rect x="514" y="112" width="50" height="22" rx="6" fill="#f5d76e"/>
+  <text x="539" y="127" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#333">A1</text>
+  <rect x="514" y="140" width="50" height="22" rx="6" fill="#f5d76e"/>
+  <text x="539" y="155" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#333">A2</text>
+  <rect x="514" y="148" width="50" height="22" rx="6" fill="#f5d76e" y="168"/>
+  <text x="539" y="183" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#333">A3</text>
+
+  <line x1="566" y1="123" x2="594" y2="138" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/>
+  <line x1="566" y1="151" x2="594" y2="143" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/>
+  <line x1="566" y1="179" x2="594" y2="150" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/>
+
+  <rect x="598" y="128" width="50" height="30" rx="8" fill="#e67e22"/>
+  <text x="623" y="148" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">통합</text>
+
+  <line x1="650" y1="143" x2="678" y2="143" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/>
+  <rect x="682" y="128" width="50" height="30" rx="8" fill="#d35400"/>
+  <text x="707" y="148" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">결과</text>
+
+  <!-- Pattern 3: Expert Pool -->
+  <rect x="20" y="200" width="370" height="130" rx="12" fill="#eafaf1" filter="url(#sh3)"/>
+  <text x="40" y="225" font-family="sans-serif" font-size="14" font-weight="bold" fill="#27ae60">3. 전문가풀</text>
+  <text x="40" y="242" font-family="sans-serif" font-size="10" fill="#7f8c8d">라우터가 적합한 전문가 선택</text>
+
+  <!-- Router -->
+  <rect x="90" y="260" width="70" height="40" rx="10" fill="#27ae60"/>
+  <text x="125" y="285" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">라우터</text>
+
+  <!-- Experts -->
+  <line x1="162" y1="270" x2="195" y2="260" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="162" y1="280" x2="195" y2="280" stroke="#555" stroke-width="2" marker-end="url(#a3)"/>
+  <line x1="162" y1="290" x2="195" y2="300" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <rect x="198" y="248" width="65" height="26" rx="8" fill="#a9dfbf" opacity="0.7"/>
+  <text x="230" y="266" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#333">전문가 A</text>
+  <rect x="198" y="268" width="65" height="26" rx="8" fill="#58d68d"/>
+  <text x="230" y="286" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">전문가 B</text>
+  <rect x="198" y="298" width="65" height="26" rx="8" fill="#a9dfbf" opacity="0.7"/>
+  <text x="230" y="316" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#333">전문가 C</text>
+
+  <line x1="265" y1="281" x2="295" y2="281" stroke="#555" stroke-width="2" marker-end="url(#a3)"/>
+  <rect x="298" y="266" width="60" height="30" rx="8" fill="#1e8449"/>
+  <text x="328" y="286" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">결과</text>
+
+  <!-- Pattern 4: Generate-Verify -->
+  <rect x="410" y="200" width="370" height="130" rx="12" fill="#fdf2e9" filter="url(#sh3)"/>
+  <text x="430" y="225" font-family="sans-serif" font-size="14" font-weight="bold" fill="#e74c3c">4. 생성-검증</text>
+  <text x="430" y="242" font-family="sans-serif" font-size="10" fill="#7f8c8d">생성 후 검증, 실패시 재생성</text>
+
+  <rect x="450" y="260" width="65" height="40" rx="10" fill="#e74c3c"/>
+  <text x="483" y="285" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">생성</text>
+
+  <line x1="517" y1="280" x2="555" y2="280" stroke="#555" stroke-width="2" marker-end="url(#a3)"/>
+
+  <rect x="558" y="260" width="65" height="40" rx="10" fill="#f39c12"/>
+  <text x="591" y="285" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">검증</text>
+
+  <!-- Pass arrow -->
+  <line x1="625" y1="280" x2="665" y2="280" stroke="#27ae60" stroke-width="2" marker-end="url(#a3)"/>
+  <text x="645" y="273" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#27ae60">Pass</text>
+  <rect x="668" y="266" width="55" height="28" rx="8" fill="#27ae60"/>
+  <text x="696" y="284" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">완료</text>
+
+  <!-- Fail loop -->
+  <path d="M591,302 Q591,325 520,325 Q450,325 483,302" fill="none" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#a3)"/>
+  <text x="535" y="320" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#e74c3c">Fail: 재시도</text>
+
+  <!-- Selection Guide -->
+  <rect x="50" y="365" width="700" height="210" rx="14" fill="white" filter="url(#sh3)" stroke="#ddd" stroke-width="1"/>
+  <text x="400" y="395" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">패턴 선택 가이드</text>
+
+  <!-- Guide items -->
+  <rect x="80" y="415" width="140" height="60" rx="10" fill="#e8f4fd"/>
+  <text x="150" y="440" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2980b9">파이프라인</text>
+  <text x="150" y="460" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">순서가 중요할 때</text>
+
+  <rect x="240" y="415" width="140" height="60" rx="10" fill="#fef9e7"/>
+  <text x="310" y="440" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#d4a017">팬아웃/팬인</text>
+  <text x="310" y="460" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">병렬 처리 가능할 때</text>
+
+  <rect x="400" y="415" width="140" height="60" rx="10" fill="#eafaf1"/>
+  <text x="470" y="440" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#27ae60">전문가풀</text>
+  <text x="470" y="460" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">유형별 분기 필요할 때</text>
+
+  <rect x="560" y="415" width="140" height="60" rx="10" fill="#fdf2e9"/>
+  <text x="630" y="440" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#e74c3c">생성-검증</text>
+  <text x="630" y="460" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">품질 보장이 핵심일 때</text>
+
+  <!-- Combination note -->
+  <text x="400" y="510" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#7f8c8d">실전에서는 여러 패턴을 조합하여 사용</text>
+
+  <!-- Combination examples -->
+  <rect x="200" y="525" width="180" height="28" rx="14" fill="#2c3e50"/>
+  <text x="290" y="544" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">파이프라인 + 생성-검증</text>
+  <rect x="410" y="525" width="180" height="28" rx="14" fill="#2c3e50"/>
+  <text x="500" y="544" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">팬아웃 + 전문가풀</text>
+</svg>
 <p>하나씩 살펴보자.</p>
 <hr />
 <h3 id="패턴-1-파이프라인-pipeline">패턴 1: 파이프라인 (Pipeline)</h3>
@@ -1699,53 +2155,8 @@ Phase 5: 출판            → 파이프라인의 마지막 단계</code></pre>
 <ul>
 <li>Chapter 4에서는 에이전트 정의 파일을 실제로 작성하는 방법을 다룬다. frontmatter의 각 필드를 어떻게 채우고, 본문의 역할/원칙/협업 섹션을 어떻게 설계하며, 좋은 에이전트 정의와 나쁜 에이전트 정의의 차이가 무엇인지를 구체적으로 배운다.</li>
 </ul>
-<h3 id="인포그래픽-4가지-패턴-흐름도-선택-가이드">인포그래픽: 4가지 패턴 흐름도 + 선택 가이드</h3>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-<p><defs> <filter id="sh3" x="-5%" y="-5%" width="110%" height="115%"> <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.1"/> </filter> <marker id="a3" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"> <polygon points="0 0, 8 3, 0 6" fill="#555"/> </marker> </defs></p>
-<p><rect width="800" height="600" fill="#f8f9fa" rx="12"/></p>
-<p><text x="400" y="40" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2c3e50">4가지 아키텍처 패턴</text></p>
-<!-- Pattern 1: Pipeline -->
-<p><rect x="20" y="65" width="370" height="115" rx="12" fill="#e8f4fd" filter="url(#sh3)"/> <text x="40" y="90" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2980b9">1. 파이프라인</text> <text x="40" y="107" font-family="sans-serif" font-size="10" fill="#7f8c8d">순차 처리, 단계별 변환</text></p>
-<p><rect x="50" y="120" width="60" height="35" rx="8" fill="#5ba4cf"/> <text x="80" y="142" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">A1</text> <line x1="112" y1="137" x2="135" y2="137" stroke="#555" stroke-width="2" marker-end="url(#a3)"/> <rect x="138" y="120" width="60" height="35" rx="8" fill="#5ba4cf"/> <text x="168" y="142" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">A2</text> <line x1="200" y1="137" x2="223" y2="137" stroke="#555" stroke-width="2" marker-end="url(#a3)"/> <rect x="226" y="120" width="60" height="35" rx="8" fill="#5ba4cf"/> <text x="256" y="142" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">A3</text> <line x1="288" y1="137" x2="311" y2="137" stroke="#555" stroke-width="2" marker-end="url(#a3)"/> <rect x="314" y="120" width="60" height="35" rx="8" fill="#3498db"/> <text x="344" y="142" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">결과</text></p>
-<!-- Pattern 2: Fan-out / Fan-in -->
-<p><rect x="410" y="65" width="370" height="115" rx="12" fill="#fef9e7" filter="url(#sh3)"/> <text x="430" y="90" font-family="sans-serif" font-size="14" font-weight="bold" fill="#d4a017">2. 팬아웃 / 팬인</text> <text x="430" y="107" font-family="sans-serif" font-size="10" fill="#7f8c8d">병렬 분배 후 통합</text></p>
-<p><rect x="430" y="125" width="50" height="30" rx="8" fill="#f0c040"/> <text x="455" y="145" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">분배</text></p>
-<p><line x1="482" y1="132" x2="510" y2="122" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/> <line x1="482" y1="140" x2="510" y2="140" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/> <line x1="482" y1="148" x2="510" y2="158" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/></p>
-<p><rect x="514" y="112" width="50" height="22" rx="6" fill="#f5d76e"/> <text x="539" y="127" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#333">A1</text> <rect x="514" y="140" width="50" height="22" rx="6" fill="#f5d76e"/> <text x="539" y="155" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#333">A2</text> <rect x="514" y="148" width="50" height="22" rx="6" fill="#f5d76e" y="168"/> <text x="539" y="183" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#333">A3</text></p>
-<p><line x1="566" y1="123" x2="594" y2="138" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/> <line x1="566" y1="151" x2="594" y2="143" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/> <line x1="566" y1="179" x2="594" y2="150" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/></p>
-<p><rect x="598" y="128" width="50" height="30" rx="8" fill="#e67e22"/> <text x="623" y="148" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">통합</text></p>
-<p><line x1="650" y1="143" x2="678" y2="143" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/> <rect x="682" y="128" width="50" height="30" rx="8" fill="#d35400"/> <text x="707" y="148" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">결과</text></p>
-<!-- Pattern 3: Expert Pool -->
-<p><rect x="20" y="200" width="370" height="130" rx="12" fill="#eafaf1" filter="url(#sh3)"/> <text x="40" y="225" font-family="sans-serif" font-size="14" font-weight="bold" fill="#27ae60">3. 전문가풀</text> <text x="40" y="242" font-family="sans-serif" font-size="10" fill="#7f8c8d">라우터가 적합한 전문가 선택</text></p>
-<!-- Router -->
-<p><rect x="90" y="260" width="70" height="40" rx="10" fill="#27ae60"/> <text x="125" y="285" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">라우터</text></p>
-<!-- Experts -->
-<p><line x1="162" y1="270" x2="195" y2="260" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3"/> <line x1="162" y1="280" x2="195" y2="280" stroke="#555" stroke-width="2" marker-end="url(#a3)"/> <line x1="162" y1="290" x2="195" y2="300" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3"/></p>
-<p><rect x="198" y="248" width="65" height="26" rx="8" fill="#a9dfbf" opacity="0.7"/> <text x="230" y="266" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#333">전문가 A</text> <rect x="198" y="268" width="65" height="26" rx="8" fill="#58d68d"/> <text x="230" y="286" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">전문가 B</text> <rect x="198" y="298" width="65" height="26" rx="8" fill="#a9dfbf" opacity="0.7"/> <text x="230" y="316" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#333">전문가 C</text></p>
-<p><line x1="265" y1="281" x2="295" y2="281" stroke="#555" stroke-width="2" marker-end="url(#a3)"/> <rect x="298" y="266" width="60" height="30" rx="8" fill="#1e8449"/> <text x="328" y="286" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">결과</text></p>
-<!-- Pattern 4: Generate-Verify -->
-<p><rect x="410" y="200" width="370" height="130" rx="12" fill="#fdf2e9" filter="url(#sh3)"/> <text x="430" y="225" font-family="sans-serif" font-size="14" font-weight="bold" fill="#e74c3c">4. 생성-검증</text> <text x="430" y="242" font-family="sans-serif" font-size="10" fill="#7f8c8d">생성 후 검증, 실패시 재생성</text></p>
-<p><rect x="450" y="260" width="65" height="40" rx="10" fill="#e74c3c"/> <text x="483" y="285" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">생성</text></p>
-<p><line x1="517" y1="280" x2="555" y2="280" stroke="#555" stroke-width="2" marker-end="url(#a3)"/></p>
-<p><rect x="558" y="260" width="65" height="40" rx="10" fill="#f39c12"/> <text x="591" y="285" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">검증</text></p>
-<!-- Pass arrow -->
-<p><line x1="625" y1="280" x2="665" y2="280" stroke="#27ae60" stroke-width="2" marker-end="url(#a3)"/> <text x="645" y="273" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#27ae60">Pass</text> <rect x="668" y="266" width="55" height="28" rx="8" fill="#27ae60"/> <text x="696" y="284" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">완료</text></p>
-<!-- Fail loop -->
-<p><path d="M591,302 Q591,325 520,325 Q450,325 483,302" fill="none" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#a3)"/> <text x="535" y="320" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#e74c3c">Fail: 재시도</text></p>
-<!-- Selection Guide -->
-<p><rect x="50" y="365" width="700" height="210" rx="14" fill="white" filter="url(#sh3)" stroke="#ddd" stroke-width="1"/> <text x="400" y="395" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">패턴 선택 가이드</text></p>
-<!-- Guide items -->
-<p><rect x="80" y="415" width="140" height="60" rx="10" fill="#e8f4fd"/> <text x="150" y="440" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2980b9">파이프라인</text> <text x="150" y="460" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">순서가 중요할 때</text></p>
-<p><rect x="240" y="415" width="140" height="60" rx="10" fill="#fef9e7"/> <text x="310" y="440" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#d4a017">팬아웃/팬인</text> <text x="310" y="460" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">병렬 처리 가능할 때</text></p>
-<p><rect x="400" y="415" width="140" height="60" rx="10" fill="#eafaf1"/> <text x="470" y="440" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#27ae60">전문가풀</text> <text x="470" y="460" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">유형별 분기 필요할 때</text></p>
-<p><rect x="560" y="415" width="140" height="60" rx="10" fill="#fdf2e9"/> <text x="630" y="440" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#e74c3c">생성-검증</text> <text x="630" y="460" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">품질 보장이 핵심일 때</text></p>
-<!-- Combination note -->
-<p><text x="400" y="510" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#7f8c8d">실전에서는 여러 패턴을 조합하여 사용</text></p>
-<!-- Combination examples -->
-<rect x="200" y="525" width="180" height="28" rx="14" fill="#2c3e50"/> <text x="290" y="544" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">파이프라인 + 생성-검증</text> <rect x="410" y="525" width="180" height="28" rx="14" fill="#2c3e50"/> <text x="500" y="544" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">팬아웃 + 전문가풀</text>
-</svg>
 </section>
-<section id="chapter-5" class="chapter"><h1 id="chapter-4-에이전트-정의-작성하기">Chapter 4: 에이전트 정의 작성하기</h1>
+<section id="ch04" class="chapter"><h1 id="chapter-4-에이전트-정의-작성하기">Chapter 4: 에이전트 정의 작성하기</h1>
 <h2 id="이-챕터에서-배울-것">이 챕터에서 배울 것</h2>
 <ul>
 <li>에이전트 파일의 전체 구조: frontmatter와 본문이 각각 어떤 역할을 하는지</li>
@@ -2421,7 +2832,7 @@ Phase 5: 출판            → 파이프라인의 마지막 단계</code></pre>
 <li>Chapter 5에서는 에이전트가 참조하는 <strong>스킬(Skill) 정의</strong>를 작성한다. 에이전트가 “누구인가”를 정의했다면, 스킬은 “어떤 절차로 일하는가”를 정의한다. Chapter 4에서 만든 코드 리뷰어 에이전트가 실제로 사용할 “코드 리뷰” 스킬을 step-by-step으로 작성한다.</li>
 </ul>
 </section>
-<section id="chapter-6" class="chapter"><h1 id="chapter-5-스킬-정의-작성하기">Chapter 5: 스킬 정의 작성하기</h1>
+<section id="ch05" class="chapter"><h1 id="chapter-5-스킬-정의-작성하기">Chapter 5: 스킬 정의 작성하기</h1>
 <h2 id="이-챕터에서-배울-것">이 챕터에서 배울 것</h2>
 <ul>
 <li>스킬 파일(<code>.claude/skills/*/SKILL.md</code>)의 전체 구조와 각 섹션의 역할</li>
@@ -3008,7 +3419,7 @@ Phase 5: 출판            → 파이프라인의 마지막 단계</code></pre>
 <li>Chapter 6에서는 여러 에이전트와 스킬을 하나로 엮는 <strong>오케스트레이터 스킬</strong>을 만든다. Chapter 4의 에이전트와 Chapter 5의 스킬을 조합하여 “코드 품질 관리” 오케스트레이터를 완성하고, 에이전트 간 데이터 흐름과 실행 순서를 설계하는 방법을 배운다.</li>
 </ul>
 </section>
-<section id="chapter-7" class="chapter"><h1 id="chapter-6-오케스트레이터-스킬-만들기">Chapter 6: 오케스트레이터 스킬 만들기</h1>
+<section id="ch06" class="chapter"><h1 id="chapter-6-오케스트레이터-스킬-만들기">Chapter 6: 오케스트레이터 스킬 만들기</h1>
 <h2 id="이-챕터에서-배울-것">이 챕터에서 배울 것</h2>
 <ul>
 <li>오케스트레이터 스킬이 무엇이며, 일반 스킬과 어떻게 다른지</li>
@@ -3069,6 +3480,110 @@ Phase 5: 출판            → 파이프라인의 마지막 단계</code></pre>
 <li><strong>재사용이 어렵다</strong>: 같은 에이전트를 다른 팀에서 쓰려면 협업 섹션을 매번 수정해야 한다.</li>
 </ol>
 <p>오케스트레이터가 있으면 에이전트는 자기 역할에만 집중하고, 팀 구조는 오케스트레이터 한 파일에서 관리된다. 에이전트 교체, 순서 변경, 팀 확장이 모두 오케스트레이터 수정만으로 가능해진다.</p>
+<h3>인포그래픽: 오케스트레이터 실행 흐름도</h3>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <filter id="sh6" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+    <marker id="a6" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#555"/>
+    </marker>
+    <marker id="a6g" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#27ae60"/>
+    </marker>
+    <marker id="a6r" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#e74c3c"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="600" fill="#f8f9fa" rx="12"/>
+
+  <text x="400" y="42" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2c3e50">오케스트레이터 실행 흐름</text>
+
+  <!-- Start -->
+  <circle cx="400" cy="80" r="18" fill="#2c3e50"/>
+  <text x="400" y="86" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white">시작</text>
+
+  <line x1="400" y1="98" x2="400" y2="125" stroke="#555" stroke-width="2" marker-end="url(#a6)"/>
+
+  <!-- Phase 1 -->
+  <rect x="270" y="128" width="260" height="50" rx="12" fill="#a8d8ea" filter="url(#sh6)"/>
+  <text x="330" y="150" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2c3e50">Phase 1</text>
+  <text x="330" y="168" font-family="sans-serif" font-size="11" fill="#555">초기화 / 계획 수립</text>
+
+  <!-- Agent call indicator -->
+  <rect x="470" y="138" width="50" height="30" rx="8" fill="#5ba4cf"/>
+  <text x="495" y="158" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Agent</text>
+
+  <line x1="400" y1="178" x2="400" y2="200" stroke="#555" stroke-width="2" marker-end="url(#a6)"/>
+
+  <!-- Verification Gate 1 -->
+  <polygon points="400,205 450,230 400,255 350,230" fill="#f5d76e" stroke="#d4a017" stroke-width="1.5" filter="url(#sh6)"/>
+  <text x="400" y="234" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#7d6608">검증</text>
+
+  <!-- Pass -->
+  <line x1="400" y1="255" x2="400" y2="280" stroke="#27ae60" stroke-width="2" marker-end="url(#a6g)"/>
+  <text x="415" y="272" font-family="sans-serif" font-size="9" fill="#27ae60">Pass</text>
+
+  <!-- Fail loop back -->
+  <path d="M350,230 L270,230 L270,153 L268,153" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a6r)"/>
+  <text x="250" y="195" font-family="sans-serif" font-size="9" fill="#e74c3c">Fail</text>
+
+  <!-- Phase 2 -->
+  <rect x="270" y="283" width="260" height="50" rx="12" fill="#ffd6a5" filter="url(#sh6)"/>
+  <text x="330" y="305" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2c3e50">Phase 2</text>
+  <text x="330" y="323" font-family="sans-serif" font-size="11" fill="#555">핵심 작업 실행</text>
+
+  <rect x="470" y="293" width="50" height="30" rx="8" fill="#e8943a"/>
+  <text x="495" y="313" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Agent</text>
+
+  <line x1="400" y1="333" x2="400" y2="355" stroke="#555" stroke-width="2" marker-end="url(#a6)"/>
+
+  <!-- Verification Gate 2 -->
+  <polygon points="400,360 450,385 400,410 350,385" fill="#f5d76e" stroke="#d4a017" stroke-width="1.5" filter="url(#sh6)"/>
+  <text x="400" y="389" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#7d6608">검증</text>
+
+  <line x1="400" y1="410" x2="400" y2="435" stroke="#27ae60" stroke-width="2" marker-end="url(#a6g)"/>
+  <text x="415" y="427" font-family="sans-serif" font-size="9" fill="#27ae60">Pass</text>
+
+  <path d="M350,385 L270,385 L270,308 L268,308" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a6r)"/>
+  <text x="250" y="350" font-family="sans-serif" font-size="9" fill="#e74c3c">Fail</text>
+
+  <!-- Phase N -->
+  <rect x="270" y="438" width="260" height="50" rx="12" fill="#c3e6cb" filter="url(#sh6)"/>
+  <text x="330" y="460" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2c3e50">Phase N</text>
+  <text x="330" y="478" font-family="sans-serif" font-size="11" fill="#555">최종 산출물 생성</text>
+
+  <rect x="470" y="448" width="50" height="30" rx="8" fill="#27ae60"/>
+  <text x="495" y="468" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Agent</text>
+
+  <line x1="400" y1="488" x2="400" y2="510" stroke="#555" stroke-width="2" marker-end="url(#a6)"/>
+
+  <!-- Final Gate -->
+  <polygon points="400,515 450,540 400,565 350,540" fill="#f5d76e" stroke="#d4a017" stroke-width="1.5" filter="url(#sh6)"/>
+  <text x="400" y="544" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#7d6608">검증</text>
+
+  <path d="M350,540 L270,540 L270,463 L268,463" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a6r)"/>
+  <text x="250" y="505" font-family="sans-serif" font-size="9" fill="#e74c3c">Fail</text>
+
+  <!-- End -->
+  <line x1="450" y1="540" x2="530" y2="540" stroke="#27ae60" stroke-width="2" marker-end="url(#a6g)"/>
+  <rect x="535" y="525" width="70" height="30" rx="15" fill="#2c3e50"/>
+  <text x="570" y="545" text-anchor="middle" font-family="sans-serif" font-size="12" fill="white">완료</text>
+
+  <!-- Side legend -->
+  <rect x="610" y="130" width="170" height="145" rx="10" fill="white" stroke="#ddd" stroke-width="1"/>
+  <text x="695" y="155" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2c3e50">범례</text>
+  <rect x="630" y="168" width="30" height="16" rx="4" fill="#a8d8ea"/>
+  <text x="670" y="181" font-family="sans-serif" font-size="10" fill="#555">Phase 단계</text>
+  <polygon points="645,205 660,215 645,225 630,215" fill="#f5d76e"/>
+  <text x="670" y="220" font-family="sans-serif" font-size="10" fill="#555">검증 게이트</text>
+  <line x1="630" y1="245" x2="660" y2="245" stroke="#27ae60" stroke-width="2"/>
+  <text x="670" y="249" font-family="sans-serif" font-size="10" fill="#27ae60">통과</text>
+  <line x1="630" y1="262" x2="660" y2="262" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="670" y="266" font-family="sans-serif" font-size="10" fill="#e74c3c">재시도</text>
+</svg>
 <hr />
 <h3 id="오케스트레이터-스킬의-전체-구조">오케스트레이터 스킬의 전체 구조</h3>
 <p>오케스트레이터 스킬 파일은 일반 스킬과 동일하게 <code>.claude/skills/{스킬명}/SKILL.md</code>에 위치한다. 파일 형식도 같다. 다만, <strong>포함하는 정보의 범위가 다르다</strong>.</p>
@@ -3627,47 +4142,8 @@ Phase 1 → Phase 2 → Phase 3 ↔ Phase 4 → Phase 5</code></pre>
 <ul>
 <li>Chapter 7에서는 이 책 자체를 만든 <strong>book-writer 하네스</strong>의 전체 구조를 해부한다. 5명의 에이전트, 5개 Phase의 워크플로우, 파이프라인과 생성-검증 패턴의 조합을 실제 파일을 열어보며 분석한다. Part 2에서 배운 에이전트, 스킬, 오케스트레이터 작성법이 실전에서 어떻게 적용되는지 확인하는 챕터다.</li>
 </ul>
-<h3 id="인포그래픽-오케스트레이터-실행-흐름도">인포그래픽: 오케스트레이터 실행 흐름도</h3>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-<p><defs> <filter id="sh6" x="-5%" y="-5%" width="110%" height="115%"> <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.1"/> </filter> <marker id="a6" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"> <polygon points="0 0, 8 3, 0 6" fill="#555"/> </marker> <marker id="a6g" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"> <polygon points="0 0, 8 3, 0 6" fill="#27ae60"/> </marker> <marker id="a6r" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"> <polygon points="0 0, 8 3, 0 6" fill="#e74c3c"/> </marker> </defs></p>
-<p><rect width="800" height="600" fill="#f8f9fa" rx="12"/></p>
-<p><text x="400" y="42" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2c3e50">오케스트레이터 실행 흐름</text></p>
-<!-- Start -->
-<p><circle cx="400" cy="80" r="18" fill="#2c3e50"/> <text x="400" y="86" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white">시작</text></p>
-<p><line x1="400" y1="98" x2="400" y2="125" stroke="#555" stroke-width="2" marker-end="url(#a6)"/></p>
-<!-- Phase 1 -->
-<p><rect x="270" y="128" width="260" height="50" rx="12" fill="#a8d8ea" filter="url(#sh6)"/> <text x="330" y="150" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2c3e50">Phase 1</text> <text x="330" y="168" font-family="sans-serif" font-size="11" fill="#555">초기화 / 계획 수립</text></p>
-<!-- Agent call indicator -->
-<p><rect x="470" y="138" width="50" height="30" rx="8" fill="#5ba4cf"/> <text x="495" y="158" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Agent</text></p>
-<p><line x1="400" y1="178" x2="400" y2="200" stroke="#555" stroke-width="2" marker-end="url(#a6)"/></p>
-<!-- Verification Gate 1 -->
-<p><polygon points="400,205 450,230 400,255 350,230" fill="#f5d76e" stroke="#d4a017" stroke-width="1.5" filter="url(#sh6)"/> <text x="400" y="234" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#7d6608">검증</text></p>
-<!-- Pass -->
-<p><line x1="400" y1="255" x2="400" y2="280" stroke="#27ae60" stroke-width="2" marker-end="url(#a6g)"/> <text x="415" y="272" font-family="sans-serif" font-size="9" fill="#27ae60">Pass</text></p>
-<!-- Fail loop back -->
-<p><path d="M350,230 L270,230 L270,153 L268,153" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a6r)"/> <text x="250" y="195" font-family="sans-serif" font-size="9" fill="#e74c3c">Fail</text></p>
-<!-- Phase 2 -->
-<p><rect x="270" y="283" width="260" height="50" rx="12" fill="#ffd6a5" filter="url(#sh6)"/> <text x="330" y="305" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2c3e50">Phase 2</text> <text x="330" y="323" font-family="sans-serif" font-size="11" fill="#555">핵심 작업 실행</text></p>
-<p><rect x="470" y="293" width="50" height="30" rx="8" fill="#e8943a"/> <text x="495" y="313" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Agent</text></p>
-<p><line x1="400" y1="333" x2="400" y2="355" stroke="#555" stroke-width="2" marker-end="url(#a6)"/></p>
-<!-- Verification Gate 2 -->
-<p><polygon points="400,360 450,385 400,410 350,385" fill="#f5d76e" stroke="#d4a017" stroke-width="1.5" filter="url(#sh6)"/> <text x="400" y="389" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#7d6608">검증</text></p>
-<p><line x1="400" y1="410" x2="400" y2="435" stroke="#27ae60" stroke-width="2" marker-end="url(#a6g)"/> <text x="415" y="427" font-family="sans-serif" font-size="9" fill="#27ae60">Pass</text></p>
-<p><path d="M350,385 L270,385 L270,308 L268,308" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a6r)"/> <text x="250" y="350" font-family="sans-serif" font-size="9" fill="#e74c3c">Fail</text></p>
-<!-- Phase N -->
-<p><rect x="270" y="438" width="260" height="50" rx="12" fill="#c3e6cb" filter="url(#sh6)"/> <text x="330" y="460" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2c3e50">Phase N</text> <text x="330" y="478" font-family="sans-serif" font-size="11" fill="#555">최종 산출물 생성</text></p>
-<p><rect x="470" y="448" width="50" height="30" rx="8" fill="#27ae60"/> <text x="495" y="468" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Agent</text></p>
-<p><line x1="400" y1="488" x2="400" y2="510" stroke="#555" stroke-width="2" marker-end="url(#a6)"/></p>
-<!-- Final Gate -->
-<p><polygon points="400,515 450,540 400,565 350,540" fill="#f5d76e" stroke="#d4a017" stroke-width="1.5" filter="url(#sh6)"/> <text x="400" y="544" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#7d6608">검증</text></p>
-<p><path d="M350,540 L270,540 L270,463 L268,463" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a6r)"/> <text x="250" y="505" font-family="sans-serif" font-size="9" fill="#e74c3c">Fail</text></p>
-<!-- End -->
-<p><line x1="450" y1="540" x2="530" y2="540" stroke="#27ae60" stroke-width="2" marker-end="url(#a6g)"/> <rect x="535" y="525" width="70" height="30" rx="15" fill="#2c3e50"/> <text x="570" y="545" text-anchor="middle" font-family="sans-serif" font-size="12" fill="white">완료</text></p>
-<!-- Side legend -->
-<rect x="610" y="130" width="170" height="145" rx="10" fill="white" stroke="#ddd" stroke-width="1"/> <text x="695" y="155" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2c3e50">범례</text> <rect x="630" y="168" width="30" height="16" rx="4" fill="#a8d8ea"/> <text x="670" y="181" font-family="sans-serif" font-size="10" fill="#555">Phase 단계</text> <polygon points="645,205 660,215 645,225 630,215" fill="#f5d76e"/> <text x="670" y="220" font-family="sans-serif" font-size="10" fill="#555">검증 게이트</text> <line x1="630" y1="245" x2="660" y2="245" stroke="#27ae60" stroke-width="2"/> <text x="670" y="249" font-family="sans-serif" font-size="10" fill="#27ae60">통과</text> <line x1="630" y1="262" x2="660" y2="262" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,3"/> <text x="670" y="266" font-family="sans-serif" font-size="10" fill="#e74c3c">재시도</text>
-</svg>
 </section>
-<section id="chapter-8" class="chapter"><h1 id="chapter-7-사례-1-책-집필-하네스-파이프라인-생성-검증">Chapter 7: 사례 1 — 책 집필 하네스 (파이프라인 + 생성-검증)</h1>
+<section id="ch07" class="chapter"><h1 id="chapter-7-사례-1-책-집필-하네스-파이프라인-생성-검증">Chapter 7: 사례 1 — 책 집필 하네스 (파이프라인 + 생성-검증)</h1>
 <h2 id="이-챕터에서-배울-것">이 챕터에서 배울 것</h2>
 <ul>
 <li>book-writer 하네스의 전체 구조와 5명의 에이전트가 어떻게 협업하는지</li>
@@ -3683,6 +4159,117 @@ Phase 1 → Phase 2 → Phase 3 ↔ Phase 4 → Phase 5</code></pre>
 <p>이 챕터는 메타적이다. 지금 읽고 있는 이 책 자체가 book-writer 하네스로 만들어졌다. Chapter 1의 개념 설명도, Chapter 3의 패턴 분석도, 지금 이 문장도 — 모두 5명의 에이전트가 협업한 결과물이다.</p>
 <p>book-planner가 목차를 설계했고, chapter-writer가 본문을 집필했고, book-editor가 리뷰했고, infographic-creator가 다이어그램을 그렸고, book-publisher가 PDF와 웹 뷰어로 변환한다. 이 과정을 조율한 것이 book-writer 오케스트레이터 스킬이다.</p>
 <p>이 챕터에서는 이 하네스의 전체 구조를 해부한다. Chapter 3에서 배운 패턴이 실전에서 어떻게 조합되는지, Chapter 4~6에서 배운 에이전트/스킬/오케스트레이터 작성법이 실제로 어떻게 적용되었는지를 하나씩 확인한다.</p>
+<h3>인포그래픽: book-writer 하네스 전체 아키텍처</h3>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <filter id="sh7" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+    <marker id="a7" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#555"/>
+    </marker>
+    <marker id="a7w" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="white"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="600" fill="#f8f9fa" rx="12"/>
+
+  <text x="400" y="38" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2c3e50">book-writer 하네스 아키텍처</text>
+
+  <!-- Agent team row -->
+  <text x="400" y="70" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7f8c8d">5명의 전문가 에이전트</text>
+
+  <!-- Agents -->
+  <rect x="30" y="85" width="130" height="65" rx="10" fill="#a8d8ea" filter="url(#sh7)"/>
+  <circle cx="60" cy="105" r="12" fill="#5ba4cf"/>
+  <text x="60" y="109" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">1</text>
+  <text x="105" y="108" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2c3e50">기획자</text>
+  <text x="95" y="140" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">목차/구조 설계</text>
+
+  <rect x="175" y="85" width="130" height="65" rx="10" fill="#ffd6a5" filter="url(#sh7)"/>
+  <circle cx="205" cy="105" r="12" fill="#e8943a"/>
+  <text x="205" y="109" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">2</text>
+  <text x="250" y="108" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2c3e50">리서처</text>
+  <text x="240" y="140" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">자료 조사/분석</text>
+
+  <rect x="320" y="85" width="130" height="65" rx="10" fill="#c3e6cb" filter="url(#sh7)"/>
+  <circle cx="350" cy="105" r="12" fill="#27ae60"/>
+  <text x="350" y="109" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">3</text>
+  <text x="395" y="108" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2c3e50">작가</text>
+  <text x="385" y="140" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">원고 집필</text>
+
+  <rect x="465" y="85" width="130" height="65" rx="10" fill="#f5cba7" filter="url(#sh7)"/>
+  <circle cx="495" cy="105" r="12" fill="#e67e22"/>
+  <text x="495" y="109" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">4</text>
+  <text x="540" y="108" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2c3e50">편집자</text>
+  <text x="530" y="140" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">교정/교열</text>
+
+  <rect x="610" y="85" width="130" height="65" rx="10" fill="#d5a6e6" filter="url(#sh7)"/>
+  <circle cx="640" cy="105" r="12" fill="#8e44ad"/>
+  <text x="640" y="109" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">5</text>
+  <text x="685" y="108" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2c3e50">검수자</text>
+  <text x="675" y="140" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">품질 검증</text>
+
+  <!-- Phase flow area -->
+  <rect x="40" y="175" width="720" height="400" rx="14" fill="white" filter="url(#sh7)" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="70" y="200" font-family="sans-serif" font-size="13" font-weight="bold" fill="#7f8c8d">워크플로우: 파이프라인 + 생성-검증</text>
+
+  <!-- Phase 1 -->
+  <rect x="70" y="215" width="660" height="60" rx="10" fill="#e8f4fd"/>
+  <text x="90" y="240" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2980b9">Phase 1: 기획</text>
+  <text x="90" y="260" font-family="sans-serif" font-size="11" fill="#555">기획자가 목차와 챕터 구조 설계</text>
+  <circle cx="690" cy="245" r="14" fill="#5ba4cf"/>
+  <text x="690" y="249" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white">기획</text>
+
+  <!-- Arrow -->
+  <line x1="400" y1="275" x2="400" y2="290" stroke="#bdc3c7" stroke-width="2" marker-end="url(#a7)"/>
+
+  <!-- Phase 2 -->
+  <rect x="70" y="293" width="660" height="60" rx="10" fill="#fef9e7"/>
+  <text x="90" y="318" font-family="sans-serif" font-size="13" font-weight="bold" fill="#d4a017">Phase 2: 리서치</text>
+  <text x="90" y="338" font-family="sans-serif" font-size="11" fill="#555">리서처가 챕터별 자료 조사</text>
+  <circle cx="690" cy="323" r="14" fill="#e8943a"/>
+  <text x="690" y="327" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white">리서</text>
+
+  <line x1="400" y1="353" x2="400" y2="368" stroke="#bdc3c7" stroke-width="2" marker-end="url(#a7)"/>
+
+  <!-- Phase 3: Generate-Verify loop -->
+  <rect x="70" y="371" width="660" height="70" rx="10" fill="#eafaf1"/>
+  <text x="90" y="396" font-family="sans-serif" font-size="13" font-weight="bold" fill="#27ae60">Phase 3: 집필</text>
+  <text x="90" y="416" font-family="sans-serif" font-size="11" fill="#555">작가가 원고 집필</text>
+
+  <!-- Generate-Verify indicator -->
+  <rect x="480" y="384" width="100" height="22" rx="6" fill="#27ae60"/>
+  <text x="530" y="399" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">생성</text>
+  <rect x="590" y="384" width="55" height="22" rx="6" fill="#e74c3c"/>
+  <text x="618" y="399" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">검증</text>
+  <path d="M618,408 Q618,420 555,420 Q505,420 530,408" fill="none" stroke="#e74c3c" stroke-width="1.2" stroke-dasharray="3,2"/>
+  <circle cx="690" cy="401" r="14" fill="#27ae60"/>
+  <text x="690" y="405" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white">작가</text>
+
+  <line x1="400" y1="441" x2="400" y2="456" stroke="#bdc3c7" stroke-width="2" marker-end="url(#a7)"/>
+
+  <!-- Phase 4 -->
+  <rect x="70" y="459" width="660" height="50" rx="10" fill="#fdf2e9"/>
+  <text x="90" y="482" font-family="sans-serif" font-size="13" font-weight="bold" fill="#e67e22">Phase 4: 편집</text>
+  <text x="90" y="498" font-family="sans-serif" font-size="11" fill="#555">편집자가 교정/교열</text>
+  <rect x="480" y="472" width="100" height="22" rx="6" fill="#e67e22"/>
+  <text x="530" y="487" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">생성</text>
+  <rect x="590" y="472" width="55" height="22" rx="6" fill="#e74c3c"/>
+  <text x="618" y="487" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">검증</text>
+  <circle cx="690" cy="484" r="14" fill="#e67e22"/>
+  <text x="690" y="488" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white">편집</text>
+
+  <line x1="400" y1="509" x2="400" y2="523" stroke="#bdc3c7" stroke-width="2" marker-end="url(#a7)"/>
+
+  <!-- Phase 5 -->
+  <rect x="70" y="526" width="660" height="40" rx="10" fill="#ebdef0"/>
+  <text x="90" y="551" font-family="sans-serif" font-size="13" font-weight="bold" fill="#8e44ad">Phase 5: 최종 검수</text>
+  <text x="310" y="551" font-family="sans-serif" font-size="11" fill="#555">검수자가 전체 품질 검증</text>
+  <circle cx="690" cy="546" r="14" fill="#8e44ad"/>
+  <text x="690" y="550" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white">검수</text>
+</svg>
 <hr />
 <h3 id="book-writer-하네스-전체-구조">book-writer 하네스 전체 구조</h3>
 <h4 id="에이전트-팀-구성">에이전트 팀 구성</h4>
@@ -4304,41 +4891,8 @@ book-publisher.md
 <ul>
 <li>Chapter 8에서는 <strong>팬아웃/팬인 패턴</strong>이 주연인 리서치 팀 하네스를 설계한다. 병렬로 조사하고 결과를 통합하는 구조가 book-writer의 순차 파이프라인과 어떻게 다른지, 동시 실행과 결과 통합의 설계 포인트를 배운다.</li>
 </ul>
-<h3 id="인포그래픽-book-writer-하네스-전체-아키텍처">인포그래픽: book-writer 하네스 전체 아키텍처</h3>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-<p><defs> <filter id="sh7" x="-5%" y="-5%" width="110%" height="115%"> <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.1"/> </filter> <marker id="a7" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"> <polygon points="0 0, 8 3, 0 6" fill="#555"/> </marker> <marker id="a7w" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"> <polygon points="0 0, 8 3, 0 6" fill="white"/> </marker> </defs></p>
-<p><rect width="800" height="600" fill="#f8f9fa" rx="12"/></p>
-<p><text x="400" y="38" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2c3e50">book-writer 하네스 아키텍처</text></p>
-<!-- Agent team row -->
-<p><text x="400" y="70" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7f8c8d">5명의 전문가 에이전트</text></p>
-<!-- Agents -->
-<p><rect x="30" y="85" width="130" height="65" rx="10" fill="#a8d8ea" filter="url(#sh7)"/> <circle cx="60" cy="105" r="12" fill="#5ba4cf"/> <text x="60" y="109" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">1</text> <text x="105" y="108" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2c3e50">기획자</text> <text x="95" y="140" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">목차/구조 설계</text></p>
-<p><rect x="175" y="85" width="130" height="65" rx="10" fill="#ffd6a5" filter="url(#sh7)"/> <circle cx="205" cy="105" r="12" fill="#e8943a"/> <text x="205" y="109" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">2</text> <text x="250" y="108" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2c3e50">리서처</text> <text x="240" y="140" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">자료 조사/분석</text></p>
-<p><rect x="320" y="85" width="130" height="65" rx="10" fill="#c3e6cb" filter="url(#sh7)"/> <circle cx="350" cy="105" r="12" fill="#27ae60"/> <text x="350" y="109" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">3</text> <text x="395" y="108" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2c3e50">작가</text> <text x="385" y="140" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">원고 집필</text></p>
-<p><rect x="465" y="85" width="130" height="65" rx="10" fill="#f5cba7" filter="url(#sh7)"/> <circle cx="495" cy="105" r="12" fill="#e67e22"/> <text x="495" y="109" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">4</text> <text x="540" y="108" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2c3e50">편집자</text> <text x="530" y="140" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">교정/교열</text></p>
-<p><rect x="610" y="85" width="130" height="65" rx="10" fill="#d5a6e6" filter="url(#sh7)"/> <circle cx="640" cy="105" r="12" fill="#8e44ad"/> <text x="640" y="109" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">5</text> <text x="685" y="108" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2c3e50">검수자</text> <text x="675" y="140" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">품질 검증</text></p>
-<!-- Phase flow area -->
-<p><rect x="40" y="175" width="720" height="400" rx="14" fill="white" filter="url(#sh7)" stroke="#e0e0e0" stroke-width="1"/> <text x="70" y="200" font-family="sans-serif" font-size="13" font-weight="bold" fill="#7f8c8d">워크플로우: 파이프라인 + 생성-검증</text></p>
-<!-- Phase 1 -->
-<p><rect x="70" y="215" width="660" height="60" rx="10" fill="#e8f4fd"/> <text x="90" y="240" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2980b9">Phase 1: 기획</text> <text x="90" y="260" font-family="sans-serif" font-size="11" fill="#555">기획자가 목차와 챕터 구조 설계</text> <circle cx="690" cy="245" r="14" fill="#5ba4cf"/> <text x="690" y="249" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white">기획</text></p>
-<!-- Arrow -->
-<p><line x1="400" y1="275" x2="400" y2="290" stroke="#bdc3c7" stroke-width="2" marker-end="url(#a7)"/></p>
-<!-- Phase 2 -->
-<p><rect x="70" y="293" width="660" height="60" rx="10" fill="#fef9e7"/> <text x="90" y="318" font-family="sans-serif" font-size="13" font-weight="bold" fill="#d4a017">Phase 2: 리서치</text> <text x="90" y="338" font-family="sans-serif" font-size="11" fill="#555">리서처가 챕터별 자료 조사</text> <circle cx="690" cy="323" r="14" fill="#e8943a"/> <text x="690" y="327" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white">리서</text></p>
-<p><line x1="400" y1="353" x2="400" y2="368" stroke="#bdc3c7" stroke-width="2" marker-end="url(#a7)"/></p>
-<!-- Phase 3: Generate-Verify loop -->
-<p><rect x="70" y="371" width="660" height="70" rx="10" fill="#eafaf1"/> <text x="90" y="396" font-family="sans-serif" font-size="13" font-weight="bold" fill="#27ae60">Phase 3: 집필</text> <text x="90" y="416" font-family="sans-serif" font-size="11" fill="#555">작가가 원고 집필</text></p>
-<!-- Generate-Verify indicator -->
-<p><rect x="480" y="384" width="100" height="22" rx="6" fill="#27ae60"/> <text x="530" y="399" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">생성</text> <rect x="590" y="384" width="55" height="22" rx="6" fill="#e74c3c"/> <text x="618" y="399" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">검증</text> <path d="M618,408 Q618,420 555,420 Q505,420 530,408" fill="none" stroke="#e74c3c" stroke-width="1.2" stroke-dasharray="3,2"/> <circle cx="690" cy="401" r="14" fill="#27ae60"/> <text x="690" y="405" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white">작가</text></p>
-<p><line x1="400" y1="441" x2="400" y2="456" stroke="#bdc3c7" stroke-width="2" marker-end="url(#a7)"/></p>
-<!-- Phase 4 -->
-<p><rect x="70" y="459" width="660" height="50" rx="10" fill="#fdf2e9"/> <text x="90" y="482" font-family="sans-serif" font-size="13" font-weight="bold" fill="#e67e22">Phase 4: 편집</text> <text x="90" y="498" font-family="sans-serif" font-size="11" fill="#555">편집자가 교정/교열</text> <rect x="480" y="472" width="100" height="22" rx="6" fill="#e67e22"/> <text x="530" y="487" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">생성</text> <rect x="590" y="472" width="55" height="22" rx="6" fill="#e74c3c"/> <text x="618" y="487" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">검증</text> <circle cx="690" cy="484" r="14" fill="#e67e22"/> <text x="690" y="488" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white">편집</text></p>
-<p><line x1="400" y1="509" x2="400" y2="523" stroke="#bdc3c7" stroke-width="2" marker-end="url(#a7)"/></p>
-<!-- Phase 5 -->
-<rect x="70" y="526" width="660" height="40" rx="10" fill="#ebdef0"/> <text x="90" y="551" font-family="sans-serif" font-size="13" font-weight="bold" fill="#8e44ad">Phase 5: 최종 검수</text> <text x="310" y="551" font-family="sans-serif" font-size="11" fill="#555">검수자가 전체 품질 검증</text> <circle cx="690" cy="546" r="14" fill="#8e44ad"/> <text x="690" y="550" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white">검수</text>
-</svg>
 </section>
-<section id="chapter-9" class="chapter"><h1 id="chapter-8-사례-2-리서치-팀-하네스-팬아웃팬인">Chapter 8: 사례 2 — 리서치 팀 하네스 (팬아웃/팬인)</h1>
+<section id="ch08" class="chapter"><h1 id="chapter-8-사례-2-리서치-팀-하네스-팬아웃팬인">Chapter 8: 사례 2 — 리서치 팀 하네스 (팬아웃/팬인)</h1>
 <h2 id="이-챕터에서-배울-것">이 챕터에서 배울 것</h2>
 <ul>
 <li>리서치 도메인의 특성 분석: 왜 병렬 처리가 자연스러운가</li>
@@ -4392,6 +4946,105 @@ book-publisher.md
               (팬아웃) [리서처 C] ─┘
                                  (팬인)</code></pre>
 <p>Chapter 3에서 다룬 패턴 조합 원칙 — “큰 틀은 파이프라인으로 시작하고, 각 Phase 안에서 다른 패턴을 적용한다” — 의 전형적인 예다.</p>
+<h3>인포그래픽: 팬아웃/팬인 데이터 흐름도</h3>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <filter id="sh8" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+    <marker id="a8" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#555"/>
+    </marker>
+    <marker id="a8b" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2980b9"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="600" fill="#f8f9fa" rx="12"/>
+
+  <text x="400" y="42" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2c3e50">팬아웃 / 팬인 데이터 흐름</text>
+  <text x="400" y="66" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#95a5a6">리서치 팀 병렬 조사 워크플로우</text>
+
+  <!-- Input -->
+  <rect x="40" y="250" width="110" height="60" rx="14" fill="#2c3e50" filter="url(#sh8)"/>
+  <text x="95" y="276" text-anchor="middle" font-family="sans-serif" font-size="13" fill="white" font-weight="bold">조사 요청</text>
+  <text x="95" y="296" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#bdc3c7">주제 목록</text>
+
+  <!-- Fan-out: Distributor -->
+  <line x1="152" y1="280" x2="192" y2="280" stroke="#555" stroke-width="2" marker-end="url(#a8)"/>
+
+  <rect x="195" y="240" width="100" height="80" rx="14" fill="#f0c040" filter="url(#sh8)"/>
+  <text x="245" y="272" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#7d6608">분배기</text>
+  <text x="245" y="292" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#7d6608">Fan-out</text>
+
+  <!-- Fan-out arrows -->
+  <line x1="297" y1="255" x2="365" y2="135" stroke="#d4a017" stroke-width="2" marker-end="url(#a8)"/>
+  <line x1="297" y1="270" x2="365" y2="235" stroke="#d4a017" stroke-width="2" marker-end="url(#a8)"/>
+  <line x1="297" y1="285" x2="365" y2="335" stroke="#d4a017" stroke-width="2" marker-end="url(#a8)"/>
+  <line x1="297" y1="300" x2="365" y2="435" stroke="#d4a017" stroke-width="2" marker-end="url(#a8)"/>
+
+  <!-- Parallel research agents -->
+  <rect x="368" y="105" width="140" height="60" rx="12" fill="#a8d8ea" filter="url(#sh8)"/>
+  <circle cx="395" cy="130" r="12" fill="#5ba4cf"/>
+  <text x="395" y="134" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">R1</text>
+  <text x="450" y="130" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2c3e50">API 조사</text>
+  <text x="450" y="150" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">기술 문서 분석</text>
+
+  <rect x="368" y="205" width="140" height="60" rx="12" fill="#c3e6cb" filter="url(#sh8)"/>
+  <circle cx="395" cy="230" r="12" fill="#27ae60"/>
+  <text x="395" y="234" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">R2</text>
+  <text x="450" y="230" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2c3e50">사례 조사</text>
+  <text x="450" y="250" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">실전 사례 수집</text>
+
+  <rect x="368" y="305" width="140" height="60" rx="12" fill="#ffd6a5" filter="url(#sh8)"/>
+  <circle cx="395" cy="330" r="12" fill="#e8943a"/>
+  <text x="395" y="334" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">R3</text>
+  <text x="450" y="330" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2c3e50">경쟁 분석</text>
+  <text x="450" y="350" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">대안 비교</text>
+
+  <rect x="368" y="405" width="140" height="60" rx="12" fill="#d5a6e6" filter="url(#sh8)"/>
+  <circle cx="395" cy="430" r="12" fill="#8e44ad"/>
+  <text x="395" y="434" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">R4</text>
+  <text x="450" y="430" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2c3e50">트렌드 분석</text>
+  <text x="450" y="450" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">최신 동향 파악</text>
+
+  <!-- Parallel indicator -->
+  <rect x="525" y="130" width="18" height="310" rx="4" fill="none" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="534" y="290" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#bdc3c7" transform="rotate(-90 534 290)">병렬 실행</text>
+
+  <!-- Fan-in arrows -->
+  <line x1="510" y1="135" x2="565" y2="255" stroke="#2980b9" stroke-width="2" marker-end="url(#a8b)"/>
+  <line x1="510" y1="235" x2="565" y2="265" stroke="#2980b9" stroke-width="2" marker-end="url(#a8b)"/>
+  <line x1="510" y1="335" x2="565" y2="290" stroke="#2980b9" stroke-width="2" marker-end="url(#a8b)"/>
+  <line x1="510" y1="435" x2="565" y2="305" stroke="#2980b9" stroke-width="2" marker-end="url(#a8b)"/>
+
+  <!-- Fan-in: Integrator -->
+  <rect x="568" y="240" width="100" height="80" rx="14" fill="#2980b9" filter="url(#sh8)"/>
+  <text x="618" y="272" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="white">통합기</text>
+  <text x="618" y="292" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#d5eef9">Fan-in</text>
+
+  <!-- Output -->
+  <line x1="670" y1="280" x2="702" y2="280" stroke="#555" stroke-width="2" marker-end="url(#a8)"/>
+
+  <rect x="705" y="245" width="75" height="70" rx="14" fill="#2c3e50" filter="url(#sh8)"/>
+  <text x="743" y="276" text-anchor="middle" font-family="sans-serif" font-size="12" fill="white" font-weight="bold">통합</text>
+  <text x="743" y="296" text-anchor="middle" font-family="sans-serif" font-size="12" fill="white" font-weight="bold">보고서</text>
+
+  <!-- Bottom: Flow summary -->
+  <rect x="120" y="520" width="560" height="55" rx="12" fill="white" filter="url(#sh8)" stroke="#e0e0e0" stroke-width="1"/>
+
+  <rect x="145" y="535" width="80" height="26" rx="13" fill="#f0c040"/>
+  <text x="185" y="553" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white" font-weight="bold">분배</text>
+  <text x="240" y="553" font-family="sans-serif" font-size="16" fill="#bdc3c7">-></text>
+  <rect x="265" y="535" width="100" height="26" rx="13" fill="#a8d8ea"/>
+  <text x="315" y="553" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#2c3e50" font-weight="bold">병렬 조사</text>
+  <text x="380" y="553" font-family="sans-serif" font-size="16" fill="#bdc3c7">-></text>
+  <rect x="405" y="535" width="80" height="26" rx="13" fill="#2980b9"/>
+  <text x="445" y="553" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white" font-weight="bold">통합</text>
+  <text x="500" y="553" font-family="sans-serif" font-size="16" fill="#bdc3c7">-></text>
+  <rect x="525" y="535" width="80" height="26" rx="13" fill="#2c3e50"/>
+  <text x="565" y="553" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white" font-weight="bold">보고서</text>
+</svg>
 <hr />
 <h3 id="도메인-분석-리서치-작업의-구조">도메인 분석: 리서치 작업의 구조</h3>
 <p>하네스를 설계하기 전에 리서치 작업의 구조를 분석해야 한다. “어떤 에이전트가 필요한가”를 먼저 물으면 안 된다. “어떤 작업이 있고, 각 작업의 특성이 무엇인가”를 먼저 물어야 한다. 에이전트는 작업에서 파생되는 것이지, 그 반대가 아니다.</p>
@@ -5152,38 +5805,8 @@ Phase 3 ~ Phase 4: (동일)</code></pre>
 <ul>
 <li>Chapter 9에서는 세 번째 사례로 <strong>코드 생성 하네스</strong>를 구축한다. 전문가풀 패턴으로 Python, Java, Kotlin 전문가를 라우팅하고, 생성-검증 패턴으로 자동 테스트와 린트를 거쳐 코드 품질을 보장하는 구조를 설계한다. 전문가풀과 생성-검증의 조합이 어떻게 시너지를 내는지를 배운다.</li>
 </ul>
-<h3 id="인포그래픽-팬아웃팬인-데이터-흐름도">인포그래픽: 팬아웃/팬인 데이터 흐름도</h3>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-<p><defs> <filter id="sh8" x="-5%" y="-5%" width="110%" height="115%"> <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.1"/> </filter> <marker id="a8" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"> <polygon points="0 0, 8 3, 0 6" fill="#555"/> </marker> <marker id="a8b" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"> <polygon points="0 0, 8 3, 0 6" fill="#2980b9"/> </marker> </defs></p>
-<p><rect width="800" height="600" fill="#f8f9fa" rx="12"/></p>
-<p><text x="400" y="42" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2c3e50">팬아웃 / 팬인 데이터 흐름</text> <text x="400" y="66" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#95a5a6">리서치 팀 병렬 조사 워크플로우</text></p>
-<!-- Input -->
-<p><rect x="40" y="250" width="110" height="60" rx="14" fill="#2c3e50" filter="url(#sh8)"/> <text x="95" y="276" text-anchor="middle" font-family="sans-serif" font-size="13" fill="white" font-weight="bold">조사 요청</text> <text x="95" y="296" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#bdc3c7">주제 목록</text></p>
-<!-- Fan-out: Distributor -->
-<p><line x1="152" y1="280" x2="192" y2="280" stroke="#555" stroke-width="2" marker-end="url(#a8)"/></p>
-<p><rect x="195" y="240" width="100" height="80" rx="14" fill="#f0c040" filter="url(#sh8)"/> <text x="245" y="272" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#7d6608">분배기</text> <text x="245" y="292" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#7d6608">Fan-out</text></p>
-<!-- Fan-out arrows -->
-<p><line x1="297" y1="255" x2="365" y2="135" stroke="#d4a017" stroke-width="2" marker-end="url(#a8)"/> <line x1="297" y1="270" x2="365" y2="235" stroke="#d4a017" stroke-width="2" marker-end="url(#a8)"/> <line x1="297" y1="285" x2="365" y2="335" stroke="#d4a017" stroke-width="2" marker-end="url(#a8)"/> <line x1="297" y1="300" x2="365" y2="435" stroke="#d4a017" stroke-width="2" marker-end="url(#a8)"/></p>
-<!-- Parallel research agents -->
-<p><rect x="368" y="105" width="140" height="60" rx="12" fill="#a8d8ea" filter="url(#sh8)"/> <circle cx="395" cy="130" r="12" fill="#5ba4cf"/> <text x="395" y="134" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">R1</text> <text x="450" y="130" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2c3e50">API 조사</text> <text x="450" y="150" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">기술 문서 분석</text></p>
-<p><rect x="368" y="205" width="140" height="60" rx="12" fill="#c3e6cb" filter="url(#sh8)"/> <circle cx="395" cy="230" r="12" fill="#27ae60"/> <text x="395" y="234" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">R2</text> <text x="450" y="230" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2c3e50">사례 조사</text> <text x="450" y="250" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">실전 사례 수집</text></p>
-<p><rect x="368" y="305" width="140" height="60" rx="12" fill="#ffd6a5" filter="url(#sh8)"/> <circle cx="395" cy="330" r="12" fill="#e8943a"/> <text x="395" y="334" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">R3</text> <text x="450" y="330" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2c3e50">경쟁 분석</text> <text x="450" y="350" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">대안 비교</text></p>
-<p><rect x="368" y="405" width="140" height="60" rx="12" fill="#d5a6e6" filter="url(#sh8)"/> <circle cx="395" cy="430" r="12" fill="#8e44ad"/> <text x="395" y="434" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">R4</text> <text x="450" y="430" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2c3e50">트렌드 분석</text> <text x="450" y="450" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555">최신 동향 파악</text></p>
-<!-- Parallel indicator -->
-<p><rect x="525" y="130" width="18" height="310" rx="4" fill="none" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="4,3"/> <text x="534" y="290" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#bdc3c7" transform="rotate(-90 534 290)">병렬 실행</text></p>
-<!-- Fan-in arrows -->
-<p><line x1="510" y1="135" x2="565" y2="255" stroke="#2980b9" stroke-width="2" marker-end="url(#a8b)"/> <line x1="510" y1="235" x2="565" y2="265" stroke="#2980b9" stroke-width="2" marker-end="url(#a8b)"/> <line x1="510" y1="335" x2="565" y2="290" stroke="#2980b9" stroke-width="2" marker-end="url(#a8b)"/> <line x1="510" y1="435" x2="565" y2="305" stroke="#2980b9" stroke-width="2" marker-end="url(#a8b)"/></p>
-<!-- Fan-in: Integrator -->
-<p><rect x="568" y="240" width="100" height="80" rx="14" fill="#2980b9" filter="url(#sh8)"/> <text x="618" y="272" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="white">통합기</text> <text x="618" y="292" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#d5eef9">Fan-in</text></p>
-<!-- Output -->
-<p><line x1="670" y1="280" x2="702" y2="280" stroke="#555" stroke-width="2" marker-end="url(#a8)"/></p>
-<p><rect x="705" y="245" width="75" height="70" rx="14" fill="#2c3e50" filter="url(#sh8)"/> <text x="743" y="276" text-anchor="middle" font-family="sans-serif" font-size="12" fill="white" font-weight="bold">통합</text> <text x="743" y="296" text-anchor="middle" font-family="sans-serif" font-size="12" fill="white" font-weight="bold">보고서</text></p>
-<!-- Bottom: Flow summary -->
-<p><rect x="120" y="520" width="560" height="55" rx="12" fill="white" filter="url(#sh8)" stroke="#e0e0e0" stroke-width="1"/></p>
-<rect x="145" y="535" width="80" height="26" rx="13" fill="#f0c040"/> <text x="185" y="553" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white" font-weight="bold">분배</text> <text x="240" y="553" font-family="sans-serif" font-size="16" fill="#bdc3c7">-&gt;</text> <rect x="265" y="535" width="100" height="26" rx="13" fill="#a8d8ea"/> <text x="315" y="553" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#2c3e50" font-weight="bold">병렬 조사</text> <text x="380" y="553" font-family="sans-serif" font-size="16" fill="#bdc3c7">-&gt;</text> <rect x="405" y="535" width="80" height="26" rx="13" fill="#2980b9"/> <text x="445" y="553" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white" font-weight="bold">통합</text> <text x="500" y="553" font-family="sans-serif" font-size="16" fill="#bdc3c7">-&gt;</text> <rect x="525" y="535" width="80" height="26" rx="13" fill="#2c3e50"/> <text x="565" y="553" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white" font-weight="bold">보고서</text>
-</svg>
 </section>
-<section id="chapter-10" class="chapter"><h1 id="chapter-9-사례-3-코드-생성-하네스-전문가풀-생성-검증">Chapter 9: 사례 3 — 코드 생성 하네스 (전문가풀 + 생성-검증)</h1>
+<section id="ch09" class="chapter"><h1 id="chapter-9-사례-3-코드-생성-하네스-전문가풀-생성-검증">Chapter 9: 사례 3 — 코드 생성 하네스 (전문가풀 + 생성-검증)</h1>
 <h2 id="이-챕터에서-배울-것">이 챕터에서 배울 것</h2>
 <ul>
 <li>다중 언어/프레임워크 코드 생성 시나리오에서 전문가풀 패턴이 왜 자연스러운 선택인지</li>
@@ -6390,7 +7013,7 @@ description: &quot;다중 언어 코드 생성 하네스. 전문가풀 패턴으
 <li>Chapter 10에서는 이 책에서 설계한 하네스들을 직접 만들지 않고도, <strong>harness 메타 스킬</strong>을 사용하여 자동 생성하는 방법을 다룬다. “코드 생성 하네스를 구성해줘”라고 말하면 에이전트 파일, 스킬 파일, 디렉토리 구조가 자동으로 생성되는 프로세스를 배운다.</li>
 </ul>
 </section>
-<section id="chapter-11" class="chapter"><h1 id="chapter-10-하네스-메타-스킬-활용하기">Chapter 10: 하네스 메타 스킬 활용하기</h1>
+<section id="ch10" class="chapter"><h1 id="chapter-10-하네스-메타-스킬-활용하기">Chapter 10: 하네스 메타 스킬 활용하기</h1>
 <h2 id="이-챕터에서-배울-것">이 챕터에서 배울 것</h2>
 <ul>
 <li>harness 메타 스킬이 무엇이며, 수동 구성과 어떻게 다른지</li>
@@ -7091,7 +7714,7 @@ description: &quot;다중 언어 코드 생성 하네스. 전문가풀 패턴으
 <li>Chapter 11에서는 하네스 운영 중 발생하는 <strong>문제를 진단하고 개선하는 방법</strong>을 다룬다. 에이전트 간 산출물 불일치, 무한 루프, 컨텍스트 초과 같은 흔한 문제 패턴과, 트리거 키워드 미스매치 디버깅, Phase 실패 시 복구 전략을 배운다.</li>
 </ul>
 </section>
-<section id="chapter-12" class="chapter"><h1 id="chapter-11-디버깅과-개선">Chapter 11: 디버깅과 개선</h1>
+<section id="ch11" class="chapter"><h1 id="chapter-11-디버깅과-개선">Chapter 11: 디버깅과 개선</h1>
 <h2 id="이-챕터에서-배울-것">이 챕터에서 배울 것</h2>
 <ul>
 <li>하네스 운영 중 자주 발생하는 세 가지 문제 패턴: 산출물 불일치, 무한 루프, 컨텍스트 초과</li>
@@ -7548,7 +8171,7 @@ Phase 5: [미실행]</code></pre>
 <li>Chapter 12에서는 지금까지 배운 모든 내용을 종합하여, 독자 자신의 도메인에 맞는 하네스를 처음부터 설계하는 워크시트를 제공한다</li>
 </ul>
 </section>
-<section id="chapter-13" class="chapter"><h1 id="chapter-12-나만의-하네스-설계하기">Chapter 12: 나만의 하네스 설계하기</h1>
+<section id="ch12" class="chapter"><h1 id="chapter-12-나만의-하네스-설계하기">Chapter 12: 나만의 하네스 설계하기</h1>
 <h2 id="이-챕터에서-배울-것">이 챕터에서 배울 것</h2>
 <ul>
 <li>자신의 도메인을 분석하여 하네스가 필요한지 판단하는 체크리스트</li>
@@ -7565,6 +8188,103 @@ Phase 5: [미실행]</code></pre>
 <p>Chapter 1에서 Agent와 Skill의 개념을 배웠다. Chapter 2~3에서 하네스의 구조와 아키텍처 패턴을 익혔다. Chapter 4~6에서 에이전트, 스킬, 오케스트레이터를 직접 작성하는 법을 배웠다. Chapter 7~9에서 세 가지 실전 사례를 분석했다. Chapter 10에서 메타 스킬로 자동 생성하는 법을, Chapter 11에서 디버깅하는 법을 배웠다.</p>
 <p>이 모든 지식을 하나로 엮는 것이 이 챕터의 목적이다. “내 도메인에서 하네스를 만들려면 어디서부터 시작해야 하는가?”라는 질문에 답한다.</p>
 <p>이 챕터는 설명보다 <strong>도구</strong>에 가깝다. 워크시트를 채우고, 체크리스트를 확인하고, 의사결정 트리를 따라가면 — 챕터를 다 읽었을 때 하네스의 초안이 손에 있다.</p>
+<h3>인포그래픽: 하네스 설계 전체 프로세스 요약</h3>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <filter id="sh12" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+    <marker id="a12" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#7f8c8d"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="600" fill="#f8f9fa" rx="12"/>
+
+  <text x="400" y="42" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2c3e50">하네스 설계 전체 프로세스</text>
+  <text x="400" y="66" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#95a5a6">5단계 설계 워크플로우</text>
+
+  <!-- Step 1: Domain Analysis -->
+  <rect x="55" y="100" width="130" height="160" rx="14" fill="#a8d8ea" filter="url(#sh12)"/>
+  <circle cx="120" cy="135" r="24" fill="#5ba4cf"/>
+  <text x="120" y="139" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">1</text>
+  <text x="120" y="180" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">도메인</text>
+  <text x="120" y="198" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">분석</text>
+
+  <!-- Step 1 details -->
+  <text x="120" y="225" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">문제 정의</text>
+  <text x="120" y="241" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">입출력 명확화</text>
+
+  <!-- Arrow 1->2 -->
+  <line x1="188" y1="180" x2="225" y2="180" stroke="#7f8c8d" stroke-width="2.5" marker-end="url(#a12)"/>
+
+  <!-- Step 2: Pattern Selection -->
+  <rect x="228" y="100" width="130" height="160" rx="14" fill="#ffd6a5" filter="url(#sh12)"/>
+  <circle cx="293" cy="135" r="24" fill="#e8943a"/>
+  <text x="293" y="139" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">2</text>
+  <text x="293" y="180" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">패턴</text>
+  <text x="293" y="198" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">선택</text>
+
+  <text x="293" y="225" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">4가지 패턴 평가</text>
+  <text x="293" y="241" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">조합 전략 결정</text>
+
+  <!-- Arrow 2->3 -->
+  <line x1="361" y1="180" x2="398" y2="180" stroke="#7f8c8d" stroke-width="2.5" marker-end="url(#a12)"/>
+
+  <!-- Step 3: Agent Design -->
+  <rect x="401" y="100" width="130" height="160" rx="14" fill="#c3e6cb" filter="url(#sh12)"/>
+  <circle cx="466" cy="135" r="24" fill="#27ae60"/>
+  <text x="466" y="139" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">3</text>
+  <text x="466" y="180" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">에이전트</text>
+  <text x="466" y="198" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">설계</text>
+
+  <text x="466" y="225" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">역할/전문성 정의</text>
+  <text x="466" y="241" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">팀 구성</text>
+
+  <!-- Arrow 3->4 -->
+  <line x1="534" y1="180" x2="571" y2="180" stroke="#7f8c8d" stroke-width="2.5" marker-end="url(#a12)"/>
+
+  <!-- Step 4: Orchestrator -->
+  <rect x="574" y="100" width="130" height="160" rx="14" fill="#d5a6e6" filter="url(#sh12)"/>
+  <circle cx="639" cy="135" r="24" fill="#8e44ad"/>
+  <text x="639" y="139" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">4</text>
+  <text x="639" y="180" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2c3e50">오케스트</text>
+  <text x="639" y="198" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2c3e50">레이터</text>
+
+  <text x="639" y="225" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">Phase 흐름 설계</text>
+  <text x="639" y="241" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">검증 게이트 배치</text>
+
+  <!-- Arrow 4->5 (curves down) -->
+  <path d="M639,262 L639,310 L466,310 L466,340" fill="none" stroke="#7f8c8d" stroke-width="2.5" marker-end="url(#a12)"/>
+
+  <!-- Step 5: Verification (centered below) -->
+  <rect x="280" y="343" width="370" height="130" rx="16" fill="#fadbd8" filter="url(#sh12)"/>
+  <circle cx="340" cy="378" r="24" fill="#e74c3c"/>
+  <text x="340" y="382" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">5</text>
+  <text x="500" y="378" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#2c3e50">검증 및 반복</text>
+
+  <!-- Verification details -->
+  <rect x="310" y="405" width="130" height="35" rx="8" fill="white" opacity="0.7"/>
+  <text x="375" y="427" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#555">테스트 실행</text>
+
+  <rect x="460" y="405" width="160" height="35" rx="8" fill="white" opacity="0.7"/>
+  <text x="540" y="427" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#555">품질 기준 충족 확인</text>
+
+  <!-- Feedback loop -->
+  <path d="M280,408 Q200,408 200,300 Q200,180 228,180" fill="none" stroke="#e74c3c" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#a12)"/>
+  <text x="170" y="300" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#e74c3c" transform="rotate(-90 170 300)">피드백 반복</text>
+
+  <!-- Bottom: Key principles -->
+  <rect x="100" y="505" width="600" height="70" rx="14" fill="#2c3e50" filter="url(#sh12)"/>
+  <text x="400" y="532" text-anchor="middle" font-family="sans-serif" font-size="14" fill="white" font-weight="bold">설계 핵심 원칙</text>
+  <text x="220" y="556" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#bdc3c7">단순함 우선</text>
+  <text x="400" y="556" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#bdc3c7">점진적 복잡화</text>
+  <text x="580" y="556" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#bdc3c7">검증 중심</text>
+
+  <!-- Dividers in bottom bar -->
+  <line x1="310" y1="542" x2="310" y2="564" stroke="#555" stroke-width="1"/>
+  <line x1="490" y1="542" x2="490" y2="564" stroke="#555" stroke-width="1"/>
+</svg>
 <hr />
 <h3 id="step-1-도메인-분석-하네스가-필요한가">Step 1: 도메인 분석 — 하네스가 필요한가?</h3>
 <p>하네스를 설계하기 전에, 먼저 하네스가 <strong>정말 필요한지</strong> 판단해야 한다. Chapter 2에서 배웠듯이, 단일 에이전트로 충분한 작업에 하네스를 적용하면 오히려 복잡성만 늘어난다.</p>
@@ -8287,44 +9007,6 @@ Q4. 생성된 결과물의 품질 검증이 필요하고, 기준 미달 시 재�
 <li><strong>Appendix C</strong>: 아키텍처 패턴 치트시트 — 4가지 패턴의 한 장 요약</li>
 <li><strong>Appendix D</strong>: 용어집 — 하네스, 에이전트, 스킬, 오케스트레이터 등 핵심 용어 정의</li>
 </ul>
-<h3 id="인포그래픽-하네스-설계-전체-프로세스-요약">인포그래픽: 하네스 설계 전체 프로세스 요약</h3>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-<p><defs> <filter id="sh12" x="-5%" y="-5%" width="110%" height="115%"> <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.1"/> </filter> <marker id="a12" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"> <polygon points="0 0, 8 3, 0 6" fill="#7f8c8d"/> </marker> </defs></p>
-<p><rect width="800" height="600" fill="#f8f9fa" rx="12"/></p>
-<p><text x="400" y="42" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2c3e50">하네스 설계 전체 프로세스</text> <text x="400" y="66" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#95a5a6">5단계 설계 워크플로우</text></p>
-<!-- Step 1: Domain Analysis -->
-<p><rect x="55" y="100" width="130" height="160" rx="14" fill="#a8d8ea" filter="url(#sh12)"/> <circle cx="120" cy="135" r="24" fill="#5ba4cf"/> <text x="120" y="139" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">1</text> <text x="120" y="180" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">도메인</text> <text x="120" y="198" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">분석</text></p>
-<!-- Step 1 details -->
-<p><text x="120" y="225" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">문제 정의</text> <text x="120" y="241" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">입출력 명확화</text></p>
-<!-- Arrow 1->2 -->
-<p><line x1="188" y1="180" x2="225" y2="180" stroke="#7f8c8d" stroke-width="2.5" marker-end="url(#a12)"/></p>
-<!-- Step 2: Pattern Selection -->
-<p><rect x="228" y="100" width="130" height="160" rx="14" fill="#ffd6a5" filter="url(#sh12)"/> <circle cx="293" cy="135" r="24" fill="#e8943a"/> <text x="293" y="139" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">2</text> <text x="293" y="180" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">패턴</text> <text x="293" y="198" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">선택</text></p>
-<p><text x="293" y="225" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">4가지 패턴 평가</text> <text x="293" y="241" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">조합 전략 결정</text></p>
-<!-- Arrow 2->3 -->
-<p><line x1="361" y1="180" x2="398" y2="180" stroke="#7f8c8d" stroke-width="2.5" marker-end="url(#a12)"/></p>
-<!-- Step 3: Agent Design -->
-<p><rect x="401" y="100" width="130" height="160" rx="14" fill="#c3e6cb" filter="url(#sh12)"/> <circle cx="466" cy="135" r="24" fill="#27ae60"/> <text x="466" y="139" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">3</text> <text x="466" y="180" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">에이전트</text> <text x="466" y="198" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">설계</text></p>
-<p><text x="466" y="225" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">역할/전문성 정의</text> <text x="466" y="241" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">팀 구성</text></p>
-<!-- Arrow 3->4 -->
-<p><line x1="534" y1="180" x2="571" y2="180" stroke="#7f8c8d" stroke-width="2.5" marker-end="url(#a12)"/></p>
-<!-- Step 4: Orchestrator -->
-<p><rect x="574" y="100" width="130" height="160" rx="14" fill="#d5a6e6" filter="url(#sh12)"/> <circle cx="639" cy="135" r="24" fill="#8e44ad"/> <text x="639" y="139" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">4</text> <text x="639" y="180" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2c3e50">오케스트</text> <text x="639" y="198" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2c3e50">레이터</text></p>
-<p><text x="639" y="225" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">Phase 흐름 설계</text> <text x="639" y="241" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">검증 게이트 배치</text></p>
-<!-- Arrow 4->5 (curves down) -->
-<p><path d="M639,262 L639,310 L466,310 L466,340" fill="none" stroke="#7f8c8d" stroke-width="2.5" marker-end="url(#a12)"/></p>
-<!-- Step 5: Verification (centered below) -->
-<p><rect x="280" y="343" width="370" height="130" rx="16" fill="#fadbd8" filter="url(#sh12)"/> <circle cx="340" cy="378" r="24" fill="#e74c3c"/> <text x="340" y="382" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">5</text> <text x="500" y="378" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#2c3e50">검증 및 반복</text></p>
-<!-- Verification details -->
-<p><rect x="310" y="405" width="130" height="35" rx="8" fill="white" opacity="0.7"/> <text x="375" y="427" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#555">테스트 실행</text></p>
-<p><rect x="460" y="405" width="160" height="35" rx="8" fill="white" opacity="0.7"/> <text x="540" y="427" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#555">품질 기준 충족 확인</text></p>
-<!-- Feedback loop -->
-<p><path d="M280,408 Q200,408 200,300 Q200,180 228,180" fill="none" stroke="#e74c3c" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#a12)"/> <text x="170" y="300" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#e74c3c" transform="rotate(-90 170 300)">피드백 반복</text></p>
-<!-- Bottom: Key principles -->
-<p><rect x="100" y="505" width="600" height="70" rx="14" fill="#2c3e50" filter="url(#sh12)"/> <text x="400" y="532" text-anchor="middle" font-family="sans-serif" font-size="14" fill="white" font-weight="bold">설계 핵심 원칙</text> <text x="220" y="556" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#bdc3c7">단순함 우선</text> <text x="400" y="556" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#bdc3c7">점진적 복잡화</text> <text x="580" y="556" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#bdc3c7">검증 중심</text></p>
-<!-- Dividers in bottom bar -->
-<line x1="310" y1="542" x2="310" y2="564" stroke="#555" stroke-width="1"/> <line x1="490" y1="542" x2="490" y2="564" stroke="#555" stroke-width="1"/>
-</svg>
 </section>
 </main>
 <script>

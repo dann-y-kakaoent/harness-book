@@ -44,6 +44,8 @@ Chapter 3에서 팬아웃/팬인 패턴을 배웠다. 독립적인 하위 작업
 
 Chapter 3에서 다룬 패턴 조합 원칙 — "큰 틀은 파이프라인으로 시작하고, 각 Phase 안에서 다른 패턴을 적용한다" — 의 전형적인 예다.
 
+<!-- INFOGRAPHIC: infographic-ch08-fanout-fanin-flow.svg -->
+
 ---
 
 ### 도메인 분석: 리서치 작업의 구조

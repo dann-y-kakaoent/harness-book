@@ -33,6 +33,8 @@
 
 이 세 요소가 `.claude/` 디렉토리 안에 마크다운 파일로 존재한다. 그것이 하네스의 전부다.
 
+<!-- INFOGRAPHIC: infographic-ch02-harness-overview.svg -->
+
 ---
 
 ## 실제 동작 예시: 이 책이 만들어진 방법
@@ -83,6 +85,8 @@ Phase 5: [book-publisher]       → PDF 259p + 웹 뷰어
 ```
 
 마크다운 파일 6개. 이것이 5명의 전문가 팀과 지휘자를 만들어낸 전부다.
+
+<!-- INFOGRAPHIC: infographic-ch07-book-writer-architecture.svg -->
 
 ---
 

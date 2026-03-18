@@ -80,6 +80,8 @@ Claude Code는 터미널에서 동작하는 AI 코딩 어시스턴트다. 기본
 | 파일 위치 | `.claude/agents/*.md` | `.claude/skills/*/SKILL.md` |
 | 단위 | 파일 1개 = 에이전트 1명 | 디렉토리 1개 = 스킬 1개 |
 
+<!-- INFOGRAPHIC: infographic-ch01-agent-vs-skill.svg -->
+
 왜 분리해야 할까? 하나의 스킬이 여러 에이전트를 조율할 수 있고, 하나의 에이전트가 여러 스킬에서 활용될 수 있기 때문이다. 예를 들어 `chapter-writer` 에이전트는 `book-writer` 스킬뿐 아니라, 미래에 만들 `blog-writer` 스킬에서도 재사용할 수 있다.
 
 ---
