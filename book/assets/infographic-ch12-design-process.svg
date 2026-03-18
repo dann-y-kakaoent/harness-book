@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <filter id="sh12" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+    <marker id="a12" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#7f8c8d"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="600" fill="#f8f9fa" rx="12"/>
+
+  <text x="400" y="42" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2c3e50">하네스 설계 전체 프로세스</text>
+  <text x="400" y="66" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#95a5a6">5단계 설계 워크플로우</text>
+
+  <!-- Step 1: Domain Analysis -->
+  <rect x="55" y="100" width="130" height="160" rx="14" fill="#a8d8ea" filter="url(#sh12)"/>
+  <circle cx="120" cy="135" r="24" fill="#5ba4cf"/>
+  <text x="120" y="139" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">1</text>
+  <text x="120" y="180" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">도메인</text>
+  <text x="120" y="198" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">분석</text>
+
+  <!-- Step 1 details -->
+  <text x="120" y="225" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">문제 정의</text>
+  <text x="120" y="241" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">입출력 명확화</text>
+
+  <!-- Arrow 1->2 -->
+  <line x1="188" y1="180" x2="225" y2="180" stroke="#7f8c8d" stroke-width="2.5" marker-end="url(#a12)"/>
+
+  <!-- Step 2: Pattern Selection -->
+  <rect x="228" y="100" width="130" height="160" rx="14" fill="#ffd6a5" filter="url(#sh12)"/>
+  <circle cx="293" cy="135" r="24" fill="#e8943a"/>
+  <text x="293" y="139" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">2</text>
+  <text x="293" y="180" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">패턴</text>
+  <text x="293" y="198" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">선택</text>
+
+  <text x="293" y="225" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">4가지 패턴 평가</text>
+  <text x="293" y="241" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">조합 전략 결정</text>
+
+  <!-- Arrow 2->3 -->
+  <line x1="361" y1="180" x2="398" y2="180" stroke="#7f8c8d" stroke-width="2.5" marker-end="url(#a12)"/>
+
+  <!-- Step 3: Agent Design -->
+  <rect x="401" y="100" width="130" height="160" rx="14" fill="#c3e6cb" filter="url(#sh12)"/>
+  <circle cx="466" cy="135" r="24" fill="#27ae60"/>
+  <text x="466" y="139" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">3</text>
+  <text x="466" y="180" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">에이전트</text>
+  <text x="466" y="198" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">설계</text>
+
+  <text x="466" y="225" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">역할/전문성 정의</text>
+  <text x="466" y="241" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">팀 구성</text>
+
+  <!-- Arrow 3->4 -->
+  <line x1="534" y1="180" x2="571" y2="180" stroke="#7f8c8d" stroke-width="2.5" marker-end="url(#a12)"/>
+
+  <!-- Step 4: Orchestrator -->
+  <rect x="574" y="100" width="130" height="160" rx="14" fill="#d5a6e6" filter="url(#sh12)"/>
+  <circle cx="639" cy="135" r="24" fill="#8e44ad"/>
+  <text x="639" y="139" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">4</text>
+  <text x="639" y="180" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2c3e50">오케스트</text>
+  <text x="639" y="198" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2c3e50">레이터</text>
+
+  <text x="639" y="225" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">Phase 흐름 설계</text>
+  <text x="639" y="241" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">검증 게이트 배치</text>
+
+  <!-- Arrow 4->5 (curves down) -->
+  <path d="M639,262 L639,310 L466,310 L466,340" fill="none" stroke="#7f8c8d" stroke-width="2.5" marker-end="url(#a12)"/>
+
+  <!-- Step 5: Verification (centered below) -->
+  <rect x="280" y="343" width="370" height="130" rx="16" fill="#fadbd8" filter="url(#sh12)"/>
+  <circle cx="340" cy="378" r="24" fill="#e74c3c"/>
+  <text x="340" y="382" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" font-weight="bold">5</text>
+  <text x="500" y="378" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#2c3e50">검증 및 반복</text>
+
+  <!-- Verification details -->
+  <rect x="310" y="405" width="130" height="35" rx="8" fill="white" opacity="0.7"/>
+  <text x="375" y="427" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#555">테스트 실행</text>
+
+  <rect x="460" y="405" width="160" height="35" rx="8" fill="white" opacity="0.7"/>
+  <text x="540" y="427" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#555">품질 기준 충족 확인</text>
+
+  <!-- Feedback loop -->
+  <path d="M280,408 Q200,408 200,300 Q200,180 228,180" fill="none" stroke="#e74c3c" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#a12)"/>
+  <text x="170" y="300" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#e74c3c" transform="rotate(-90 170 300)">피드백 반복</text>
+
+  <!-- Bottom: Key principles -->
+  <rect x="100" y="505" width="600" height="70" rx="14" fill="#2c3e50" filter="url(#sh12)"/>
+  <text x="400" y="532" text-anchor="middle" font-family="sans-serif" font-size="14" fill="white" font-weight="bold">설계 핵심 원칙</text>
+  <text x="220" y="556" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#bdc3c7">단순함 우선</text>
+  <text x="400" y="556" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#bdc3c7">점진적 복잡화</text>
+  <text x="580" y="556" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#bdc3c7">검증 중심</text>
+
+  <!-- Dividers in bottom bar -->
+  <line x1="310" y1="542" x2="310" y2="564" stroke="#555" stroke-width="1"/>
+  <line x1="490" y1="542" x2="490" y2="564" stroke="#555" stroke-width="1"/>
+</svg>

@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <filter id="sh3" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+    <marker id="a3" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#555"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="600" fill="#f8f9fa" rx="12"/>
+
+  <text x="400" y="40" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2c3e50">4가지 아키텍처 패턴</text>
+
+  <!-- Pattern 1: Pipeline -->
+  <rect x="20" y="65" width="370" height="115" rx="12" fill="#e8f4fd" filter="url(#sh3)"/>
+  <text x="40" y="90" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2980b9">1. 파이프라인</text>
+  <text x="40" y="107" font-family="sans-serif" font-size="10" fill="#7f8c8d">순차 처리, 단계별 변환</text>
+
+  <rect x="50" y="120" width="60" height="35" rx="8" fill="#5ba4cf"/>
+  <text x="80" y="142" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">A1</text>
+  <line x1="112" y1="137" x2="135" y2="137" stroke="#555" stroke-width="2" marker-end="url(#a3)"/>
+  <rect x="138" y="120" width="60" height="35" rx="8" fill="#5ba4cf"/>
+  <text x="168" y="142" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">A2</text>
+  <line x1="200" y1="137" x2="223" y2="137" stroke="#555" stroke-width="2" marker-end="url(#a3)"/>
+  <rect x="226" y="120" width="60" height="35" rx="8" fill="#5ba4cf"/>
+  <text x="256" y="142" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">A3</text>
+  <line x1="288" y1="137" x2="311" y2="137" stroke="#555" stroke-width="2" marker-end="url(#a3)"/>
+  <rect x="314" y="120" width="60" height="35" rx="8" fill="#3498db"/>
+  <text x="344" y="142" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">결과</text>
+
+  <!-- Pattern 2: Fan-out / Fan-in -->
+  <rect x="410" y="65" width="370" height="115" rx="12" fill="#fef9e7" filter="url(#sh3)"/>
+  <text x="430" y="90" font-family="sans-serif" font-size="14" font-weight="bold" fill="#d4a017">2. 팬아웃 / 팬인</text>
+  <text x="430" y="107" font-family="sans-serif" font-size="10" fill="#7f8c8d">병렬 분배 후 통합</text>
+
+  <rect x="430" y="125" width="50" height="30" rx="8" fill="#f0c040"/>
+  <text x="455" y="145" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">분배</text>
+
+  <line x1="482" y1="132" x2="510" y2="122" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/>
+  <line x1="482" y1="140" x2="510" y2="140" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/>
+  <line x1="482" y1="148" x2="510" y2="158" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/>
+
+  <rect x="514" y="112" width="50" height="22" rx="6" fill="#f5d76e"/>
+  <text x="539" y="127" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#333">A1</text>
+  <rect x="514" y="140" width="50" height="22" rx="6" fill="#f5d76e"/>
+  <text x="539" y="155" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#333">A2</text>
+  <rect x="514" y="148" width="50" height="22" rx="6" fill="#f5d76e" y="168"/>
+  <text x="539" y="183" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#333">A3</text>
+
+  <line x1="566" y1="123" x2="594" y2="138" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/>
+  <line x1="566" y1="151" x2="594" y2="143" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/>
+  <line x1="566" y1="179" x2="594" y2="150" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/>
+
+  <rect x="598" y="128" width="50" height="30" rx="8" fill="#e67e22"/>
+  <text x="623" y="148" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">통합</text>
+
+  <line x1="650" y1="143" x2="678" y2="143" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/>
+  <rect x="682" y="128" width="50" height="30" rx="8" fill="#d35400"/>
+  <text x="707" y="148" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">결과</text>
+
+  <!-- Pattern 3: Expert Pool -->
+  <rect x="20" y="200" width="370" height="130" rx="12" fill="#eafaf1" filter="url(#sh3)"/>
+  <text x="40" y="225" font-family="sans-serif" font-size="14" font-weight="bold" fill="#27ae60">3. 전문가풀</text>
+  <text x="40" y="242" font-family="sans-serif" font-size="10" fill="#7f8c8d">라우터가 적합한 전문가 선택</text>
+
+  <!-- Router -->
+  <rect x="90" y="260" width="70" height="40" rx="10" fill="#27ae60"/>
+  <text x="125" y="285" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">라우터</text>
+
+  <!-- Experts -->
+  <line x1="162" y1="270" x2="195" y2="260" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="162" y1="280" x2="195" y2="280" stroke="#555" stroke-width="2" marker-end="url(#a3)"/>
+  <line x1="162" y1="290" x2="195" y2="300" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <rect x="198" y="248" width="65" height="26" rx="8" fill="#a9dfbf" opacity="0.7"/>
+  <text x="230" y="266" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#333">전문가 A</text>
+  <rect x="198" y="268" width="65" height="26" rx="8" fill="#58d68d"/>
+  <text x="230" y="286" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">전문가 B</text>
+  <rect x="198" y="298" width="65" height="26" rx="8" fill="#a9dfbf" opacity="0.7"/>
+  <text x="230" y="316" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#333">전문가 C</text>
+
+  <line x1="265" y1="281" x2="295" y2="281" stroke="#555" stroke-width="2" marker-end="url(#a3)"/>
+  <rect x="298" y="266" width="60" height="30" rx="8" fill="#1e8449"/>
+  <text x="328" y="286" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">결과</text>
+
+  <!-- Pattern 4: Generate-Verify -->
+  <rect x="410" y="200" width="370" height="130" rx="12" fill="#fdf2e9" filter="url(#sh3)"/>
+  <text x="430" y="225" font-family="sans-serif" font-size="14" font-weight="bold" fill="#e74c3c">4. 생성-검증</text>
+  <text x="430" y="242" font-family="sans-serif" font-size="10" fill="#7f8c8d">생성 후 검증, 실패시 재생성</text>
+
+  <rect x="450" y="260" width="65" height="40" rx="10" fill="#e74c3c"/>
+  <text x="483" y="285" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">생성</text>
+
+  <line x1="517" y1="280" x2="555" y2="280" stroke="#555" stroke-width="2" marker-end="url(#a3)"/>
+
+  <rect x="558" y="260" width="65" height="40" rx="10" fill="#f39c12"/>
+  <text x="591" y="285" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">검증</text>
+
+  <!-- Pass arrow -->
+  <line x1="625" y1="280" x2="665" y2="280" stroke="#27ae60" stroke-width="2" marker-end="url(#a3)"/>
+  <text x="645" y="273" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#27ae60">Pass</text>
+  <rect x="668" y="266" width="55" height="28" rx="8" fill="#27ae60"/>
+  <text x="696" y="284" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">완료</text>
+
+  <!-- Fail loop -->
+  <path d="M591,302 Q591,325 520,325 Q450,325 483,302" fill="none" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#a3)"/>
+  <text x="535" y="320" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#e74c3c">Fail: 재시도</text>
+
+  <!-- Selection Guide -->
+  <rect x="50" y="365" width="700" height="210" rx="14" fill="white" filter="url(#sh3)" stroke="#ddd" stroke-width="1"/>
+  <text x="400" y="395" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">패턴 선택 가이드</text>
+
+  <!-- Guide items -->
+  <rect x="80" y="415" width="140" height="60" rx="10" fill="#e8f4fd"/>
+  <text x="150" y="440" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2980b9">파이프라인</text>
+  <text x="150" y="460" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">순서가 중요할 때</text>
+
+  <rect x="240" y="415" width="140" height="60" rx="10" fill="#fef9e7"/>
+  <text x="310" y="440" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#d4a017">팬아웃/팬인</text>
+  <text x="310" y="460" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">병렬 처리 가능할 때</text>
+
+  <rect x="400" y="415" width="140" height="60" rx="10" fill="#eafaf1"/>
+  <text x="470" y="440" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#27ae60">전문가풀</text>
+  <text x="470" y="460" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">유형별 분기 필요할 때</text>
+
+  <rect x="560" y="415" width="140" height="60" rx="10" fill="#fdf2e9"/>
+  <text x="630" y="440" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#e74c3c">생성-검증</text>
+  <text x="630" y="460" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">품질 보장이 핵심일 때</text>
+
+  <!-- Combination note -->
+  <text x="400" y="510" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#7f8c8d">실전에서는 여러 패턴을 조합하여 사용</text>
+
+  <!-- Combination examples -->
+  <rect x="200" y="525" width="180" height="28" rx="14" fill="#2c3e50"/>
+  <text x="290" y="544" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">파이프라인 + 생성-검증</text>
+  <rect x="410" y="525" width="180" height="28" rx="14" fill="#2c3e50"/>
+  <text x="500" y="544" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">팬아웃 + 전문가풀</text>
+</svg>

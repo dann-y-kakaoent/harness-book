@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="agentGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8d8ea;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#7ec8e3;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="skillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd6a5;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#ffb347;stop-opacity:1"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" rx="12"/>
+
+  <!-- Title -->
+  <text x="400" y="52" text-anchor="middle" font-family="sans-serif" font-size="26" font-weight="bold" fill="#2c3e50">Agent vs Skill</text>
+  <line x1="320" y1="64" x2="480" y2="64" stroke="#bdc3c7" stroke-width="2"/>
+
+  <!-- Agent Card -->
+  <rect x="60" y="100" width="300" height="400" rx="16" fill="url(#agentGrad)" filter="url(#shadow)"/>
+  <rect x="60" y="100" width="300" height="60" rx="16" fill="#5ba4cf"/>
+  <rect x="60" y="140" width="300" height="20" fill="#5ba4cf"/>
+  <text x="210" y="140" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="white">Agent</text>
+  <text x="210" y="195" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#2c3e50" font-weight="bold">"누가 하는가"</text>
+
+  <!-- Agent icon: person silhouette -->
+  <circle cx="210" cy="250" r="22" fill="#4a90a4" opacity="0.8"/>
+  <ellipse cx="210" cy="295" rx="30" ry="18" fill="#4a90a4" opacity="0.8"/>
+
+  <text x="210" y="340" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#34495e">전문가 페르소나</text>
+  <text x="210" y="362" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#34495e">역할, 성격, 판단 기준 정의</text>
+
+  <!-- Agent file path -->
+  <rect x="100" y="390" width="220" height="36" rx="8" fill="white" opacity="0.7"/>
+  <text x="210" y="414" text-anchor="middle" font-family="monospace" font-size="12" fill="#5ba4cf">.claude/agents/*.md</text>
+
+  <!-- Agent keywords -->
+  <rect x="105" y="440" width="70" height="26" rx="13" fill="white" opacity="0.6"/>
+  <text x="140" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#4a90a4">역할</text>
+  <rect x="185" y="440" width="70" height="26" rx="13" fill="white" opacity="0.6"/>
+  <text x="220" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#4a90a4">성격</text>
+  <rect x="265" y="440" width="70" height="26" rx="13" fill="white" opacity="0.6"/>
+  <text x="300" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#4a90a4">전문성</text>
+
+  <!-- Skill Card -->
+  <rect x="440" y="100" width="300" height="400" rx="16" fill="url(#skillGrad)" filter="url(#shadow)"/>
+  <rect x="440" y="100" width="300" height="60" rx="16" fill="#e8943a"/>
+  <rect x="440" y="140" width="300" height="20" fill="#e8943a"/>
+  <text x="590" y="140" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="white">Skill</text>
+  <text x="590" y="195" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#2c3e50" font-weight="bold">"어떻게 하는가"</text>
+
+  <!-- Skill icon: checklist -->
+  <rect x="565" y="228" width="50" height="60" rx="6" fill="#c77a2a" opacity="0.7"/>
+  <line x1="575" y1="244" x2="605" y2="244" stroke="white" stroke-width="2"/>
+  <line x1="575" y1="256" x2="605" y2="256" stroke="white" stroke-width="2"/>
+  <line x1="575" y1="268" x2="605" y2="268" stroke="white" stroke-width="2"/>
+  <polyline points="572,242 575,245 580,240" fill="none" stroke="#a8d8ea" stroke-width="2"/>
+  <polyline points="572,254 575,257 580,252" fill="none" stroke="#a8d8ea" stroke-width="2"/>
+
+  <text x="590" y="316" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#34495e">절차적 가이드</text>
+  <text x="590" y="338" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#34495e">단계별 실행 방법 정의</text>
+
+  <!-- Skill file path -->
+  <rect x="480" y="366" width="220" height="36" rx="8" fill="white" opacity="0.7"/>
+  <text x="590" y="390" text-anchor="middle" font-family="monospace" font-size="11" fill="#e8943a">.claude/skills/*/SKILL.md</text>
+
+  <!-- Skill keywords -->
+  <rect x="485" y="416" width="70" height="26" rx="13" fill="white" opacity="0.6"/>
+  <text x="520" y="434" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#c77a2a">절차</text>
+  <rect x="565" y="416" width="70" height="26" rx="13" fill="white" opacity="0.6"/>
+  <text x="600" y="434" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#c77a2a">도구</text>
+  <rect x="645" y="416" width="70" height="26" rx="13" fill="white" opacity="0.6"/>
+  <text x="680" y="434" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#c77a2a">규칙</text>
+
+  <!-- Center: Relationship arrow -->
+  <line x1="370" y1="280" x2="430" y2="280" stroke="#95a5a6" stroke-width="2" stroke-dasharray="6,4"/>
+  <polygon points="428,274 440,280 428,286" fill="#95a5a6"/>
+  <polygon points="372,274 360,280 372,286" fill="#95a5a6"/>
+  <text x="400" y="310" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#7f8c8d">조합</text>
+
+  <!-- Bottom: Unified concept -->
+  <rect x="200" y="530" width="400" height="50" rx="25" fill="#2c3e50" filter="url(#shadow)"/>
+  <text x="400" y="561" text-anchor="middle" font-family="sans-serif" font-size="15" fill="white">Agent가 Skill을 호출하여 작업 수행</text>
+
+  <!-- Arrows to bottom -->
+  <path d="M210,500 Q210,530 300,545" fill="none" stroke="#5ba4cf" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <path d="M590,500 Q590,530 500,545" fill="none" stroke="#e8943a" stroke-width="2"/>
+</svg>

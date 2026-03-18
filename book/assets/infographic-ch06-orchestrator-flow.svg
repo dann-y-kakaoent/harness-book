@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <filter id="sh6" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+    <marker id="a6" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#555"/>
+    </marker>
+    <marker id="a6g" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#27ae60"/>
+    </marker>
+    <marker id="a6r" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#e74c3c"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="600" fill="#f8f9fa" rx="12"/>
+
+  <text x="400" y="42" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2c3e50">오케스트레이터 실행 흐름</text>
+
+  <!-- Start -->
+  <circle cx="400" cy="80" r="18" fill="#2c3e50"/>
+  <text x="400" y="86" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white">시작</text>
+
+  <line x1="400" y1="98" x2="400" y2="125" stroke="#555" stroke-width="2" marker-end="url(#a6)"/>
+
+  <!-- Phase 1 -->
+  <rect x="270" y="128" width="260" height="50" rx="12" fill="#a8d8ea" filter="url(#sh6)"/>
+  <text x="330" y="150" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2c3e50">Phase 1</text>
+  <text x="330" y="168" font-family="sans-serif" font-size="11" fill="#555">초기화 / 계획 수립</text>
+
+  <!-- Agent call indicator -->
+  <rect x="470" y="138" width="50" height="30" rx="8" fill="#5ba4cf"/>
+  <text x="495" y="158" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Agent</text>
+
+  <line x1="400" y1="178" x2="400" y2="200" stroke="#555" stroke-width="2" marker-end="url(#a6)"/>
+
+  <!-- Verification Gate 1 -->
+  <polygon points="400,205 450,230 400,255 350,230" fill="#f5d76e" stroke="#d4a017" stroke-width="1.5" filter="url(#sh6)"/>
+  <text x="400" y="234" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#7d6608">검증</text>
+
+  <!-- Pass -->
+  <line x1="400" y1="255" x2="400" y2="280" stroke="#27ae60" stroke-width="2" marker-end="url(#a6g)"/>
+  <text x="415" y="272" font-family="sans-serif" font-size="9" fill="#27ae60">Pass</text>
+
+  <!-- Fail loop back -->
+  <path d="M350,230 L270,230 L270,153 L268,153" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a6r)"/>
+  <text x="250" y="195" font-family="sans-serif" font-size="9" fill="#e74c3c">Fail</text>
+
+  <!-- Phase 2 -->
+  <rect x="270" y="283" width="260" height="50" rx="12" fill="#ffd6a5" filter="url(#sh6)"/>
+  <text x="330" y="305" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2c3e50">Phase 2</text>
+  <text x="330" y="323" font-family="sans-serif" font-size="11" fill="#555">핵심 작업 실행</text>
+
+  <rect x="470" y="293" width="50" height="30" rx="8" fill="#e8943a"/>
+  <text x="495" y="313" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Agent</text>
+
+  <line x1="400" y1="333" x2="400" y2="355" stroke="#555" stroke-width="2" marker-end="url(#a6)"/>
+
+  <!-- Verification Gate 2 -->
+  <polygon points="400,360 450,385 400,410 350,385" fill="#f5d76e" stroke="#d4a017" stroke-width="1.5" filter="url(#sh6)"/>
+  <text x="400" y="389" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#7d6608">검증</text>
+
+  <line x1="400" y1="410" x2="400" y2="435" stroke="#27ae60" stroke-width="2" marker-end="url(#a6g)"/>
+  <text x="415" y="427" font-family="sans-serif" font-size="9" fill="#27ae60">Pass</text>
+
+  <path d="M350,385 L270,385 L270,308 L268,308" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a6r)"/>
+  <text x="250" y="350" font-family="sans-serif" font-size="9" fill="#e74c3c">Fail</text>
+
+  <!-- Phase N -->
+  <rect x="270" y="438" width="260" height="50" rx="12" fill="#c3e6cb" filter="url(#sh6)"/>
+  <text x="330" y="460" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2c3e50">Phase N</text>
+  <text x="330" y="478" font-family="sans-serif" font-size="11" fill="#555">최종 산출물 생성</text>
+
+  <rect x="470" y="448" width="50" height="30" rx="8" fill="#27ae60"/>
+  <text x="495" y="468" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white">Agent</text>
+
+  <line x1="400" y1="488" x2="400" y2="510" stroke="#555" stroke-width="2" marker-end="url(#a6)"/>
+
+  <!-- Final Gate -->
+  <polygon points="400,515 450,540 400,565 350,540" fill="#f5d76e" stroke="#d4a017" stroke-width="1.5" filter="url(#sh6)"/>
+  <text x="400" y="544" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#7d6608">검증</text>
+
+  <path d="M350,540 L270,540 L270,463 L268,463" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a6r)"/>
+  <text x="250" y="505" font-family="sans-serif" font-size="9" fill="#e74c3c">Fail</text>
+
+  <!-- End -->
+  <line x1="450" y1="540" x2="530" y2="540" stroke="#27ae60" stroke-width="2" marker-end="url(#a6g)"/>
+  <rect x="535" y="525" width="70" height="30" rx="15" fill="#2c3e50"/>
+  <text x="570" y="545" text-anchor="middle" font-family="sans-serif" font-size="12" fill="white">완료</text>
+
+  <!-- Side legend -->
+  <rect x="610" y="130" width="170" height="145" rx="10" fill="white" stroke="#ddd" stroke-width="1"/>
+  <text x="695" y="155" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2c3e50">범례</text>
+  <rect x="630" y="168" width="30" height="16" rx="4" fill="#a8d8ea"/>
+  <text x="670" y="181" font-family="sans-serif" font-size="10" fill="#555">Phase 단계</text>
+  <polygon points="645,205 660,215 645,225 630,215" fill="#f5d76e"/>
+  <text x="670" y="220" font-family="sans-serif" font-size="10" fill="#555">검증 게이트</text>
+  <line x1="630" y1="245" x2="660" y2="245" stroke="#27ae60" stroke-width="2"/>
+  <text x="670" y="249" font-family="sans-serif" font-size="10" fill="#27ae60">통과</text>
+  <line x1="630" y1="262" x2="660" y2="262" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="670" y="266" font-family="sans-serif" font-size="10" fill="#e74c3c">재시도</text>
+</svg>
