@@ -13,6 +13,7 @@ PDF_DIR = OUTPUT_DIR / "pdf"
 WEB_DIR = OUTPUT_DIR / "web"
 
 CHAPTER_FILES = [
+    "ch00-harness-at-a-glance.md",
     "ch01-agent-and-skill.md",
     "ch02-harness-concept.md",
     "ch03-architecture-patterns.md",
