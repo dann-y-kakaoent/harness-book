@@ -451,6 +451,112 @@ svg {
   <text x="400" y="565" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#95a5a6">메타 스킬 하나로 전체 하네스를 자동 구축</text>
 </svg>
 <hr />
+<h2 id="메타-스킬-하네스-구성해줘-한마디면-끝">메타 스킬: “하네스 구성해줘” 한마디면 끝</h2>
+<p>사용자가 하네스를 직접 설계할 필요는 없다. <strong>하네스 메타 스킬</strong>(<code>/harness</code>)이 이 과정을 자동화한다.</p>
+<p>“책 집필을 자동화하고 싶다”고 요청하면, 메타 스킬이:</p>
+<ol type="1">
+<li>도메인을 분석한다 (어떤 작업이 필요한가?)</li>
+<li>에이전트 팀을 구성한다 (<code>.claude/agents/</code> 에 파일 생성)</li>
+<li>각 에이전트의 스킬을 만든다 (<code>.claude/skills/</code> 에 파일 생성)</li>
+<li>팀을 조율하는 오케스트레이터를 만든다</li>
+<li>생성된 하네스를 검증한다</li>
+</ol>
+<p><strong>메타 스킬은 “스킬을 만드는 스킬”이다.</strong> 에이전트 팀 + 오케스트레이터라는 복잡한 구조를 한 번의 요청으로 자동 생성한다. 물론 자동 생성된 결과를 이해하고 수정하려면 각 파일의 구조를 알아야 한다 — 이것이 이 책이 수동 구성을 먼저 다루는 이유다.</p>
+<h3>인포그래픽: 메타 스킬이 하네스를 만드는 과정</h3>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <filter id="sh" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-opacity="0.1"/>
+    </filter>
+    <marker id="arw" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7f8c8d"/>
+    </marker>
+    <marker id="arwPurple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#8e44ad"/>
+    </marker>
+    <linearGradient id="metaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a5f5;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#9b59b6;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="agGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8d8ea;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#5ba4cf;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="skGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd6a5;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#f0a040;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="orGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a5f5c8;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#27ae60;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="#f8f9fa" rx="12"/>
+
+  <!-- Title -->
+  <text x="400" y="42" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2c3e50">메타 스킬이 하네스를 만드는 과정</text>
+  <line x1="230" y1="54" x2="570" y2="54" stroke="#bdc3c7" stroke-width="2"/>
+
+  <!-- Step 1: User Request -->
+  <rect x="60" y="85" width="200" height="70" rx="12" fill="#ecf0f1" filter="url(#sh)" stroke="#bdc3c7" stroke-width="1"/>
+  <text x="160" y="112" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2c3e50">사용자 요청</text>
+  <text x="160" y="135" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#7f8c8d">"하네스 구성해줘"</text>
+
+  <!-- Arrow 1 -->
+  <line x1="260" y1="120" x2="310" y2="120" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arw)"/>
+
+  <!-- Step 2: Meta Skill -->
+  <rect x="320" y="75" width="200" height="90" rx="14" fill="url(#metaGrad)" filter="url(#sh)"/>
+  <text x="420" y="107" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="white">하네스 메타 스킬</text>
+  <text x="420" y="130" text-anchor="middle" font-family="sans-serif" font-size="11" fill="rgba(255,255,255,0.85)">/harness</text>
+  <text x="420" y="150" text-anchor="middle" font-family="sans-serif" font-size="11" fill="rgba(255,255,255,0.85)">스킬을 만드는 스킬</text>
+
+  <!-- Arrow 2: fan-out -->
+  <line x1="420" y1="165" x2="420" y2="195" stroke="#8e44ad" stroke-width="2" marker-end="url(#arwPurple)"/>
+
+  <!-- Phase labels -->
+  <text x="400" y="225" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#8e44ad">자동 생성</text>
+
+  <!-- Three output boxes -->
+  <!-- Agents -->
+  <rect x="60" y="250" width="200" height="120" rx="12" fill="url(#agGrad)" filter="url(#sh)"/>
+  <text x="160" y="278" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">에이전트 팀</text>
+  <text x="160" y="300" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2c3e50">.claude/agents/*.md</text>
+  <text x="160" y="322" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2c3e50">전문가 A, B, C, ...</text>
+  <text x="160" y="344" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#555">"누가 하는가"</text>
+
+  <!-- Skills -->
+  <rect x="300" y="250" width="200" height="120" rx="12" fill="url(#skGrad)" filter="url(#sh)"/>
+  <text x="400" y="278" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">스킬 정의</text>
+  <text x="400" y="300" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2c3e50">.claude/skills/*/SKILL.md</text>
+  <text x="400" y="322" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2c3e50">작업 절차, 도구, 규칙</text>
+  <text x="400" y="344" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#555">"어떻게 하는가"</text>
+
+  <!-- Orchestrator -->
+  <rect x="540" y="250" width="200" height="120" rx="12" fill="url(#orGrad)" filter="url(#sh)"/>
+  <text x="640" y="278" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">오케스트레이터</text>
+  <text x="640" y="300" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2c3e50">.claude/skills/{팀}/SKILL.md</text>
+  <text x="640" y="322" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2c3e50">Phase별 워크플로우</text>
+  <text x="640" y="344" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#555">"어떤 순서로 하는가"</text>
+
+  <!-- Fan-out arrows from meta skill -->
+  <line x1="370" y1="210" x2="160" y2="248" stroke="#8e44ad" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="420" y1="215" x2="400" y2="248" stroke="#8e44ad" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="470" y1="210" x2="640" y2="248" stroke="#8e44ad" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+  <!-- Result arrow -->
+  <rect x="200" y="410" width="400" height="55" rx="12" fill="#2c3e50" filter="url(#sh)"/>
+  <text x="400" y="435" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="white">완성된 하네스</text>
+  <text x="400" y="453" text-anchor="middle" font-family="sans-serif" font-size="11" fill="rgba(255,255,255,0.7)">에이전트 팀이 오케스트레이터의 지휘 아래 협업</text>
+
+  <!-- Arrows to result -->
+  <line x1="160" y1="370" x2="300" y2="410" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#arw)"/>
+  <line x1="400" y1="370" x2="400" y2="408" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#arw)"/>
+  <line x1="640" y1="370" x2="500" y2="410" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#arw)"/>
+</svg>
+
+<hr />
 <h2 id="실제-동작-예시-이-책이-만들어진-방법">실제 동작 예시: 이 책이 만들어진 방법</h2>
 <p>이 책 자체가 하네스로 만들어졌다. “12챕터 기술서를 집필해줘”라는 요청 하나로, 5명의 에이전트가 협업하여 259페이지 PDF를 만들어냈다.</p>
 <h3 id="에이전트-팀">에이전트 팀</h3>
@@ -1084,21 +1190,121 @@ Phase 5: [book-publisher]       → PDF 259p + 웹 뷰어</code></pre>
 <p>이 세 가지 문제를 한 줄로 요약하면 이렇다: <strong>복잡한 작업은 한 명이 아니라 팀이 필요하다.</strong></p>
 <hr />
 <h3 id="하네스란-무엇인가">하네스란 무엇인가</h3>
-<p><strong>하네스(harness)</strong>는 에이전트 팀과 오케스트레이터 스킬을 자동 생성하는 메타 스킬(meta-skill)이다. 메타 스킬이란 “스킬을 만드는 스킬”이라는 뜻이다.</p>
-<p>좀 더 풀어서 설명하면 이렇다:</p>
+<p><strong>하네스(harness)</strong>는 에이전트 팀과 오케스트레이터 스킬을 자동 생성하는 <strong>메타 스킬(meta-skill)</strong>이다. 메타 스킬이란 “스킬을 만드는 스킬”이라는 뜻이다.</p>
+<p>사용자 입장에서 하네스와의 상호작용은 놀랍도록 단순하다:</p>
+<pre><code>사용자: &quot;책 집필을 자동화하고 싶어. 하네스 구성해줘&quot;
+하네스: (도메인 분석 → 에이전트 설계 → 스킬 생성 → 오케스트레이터 조립 → 검증)
+결과: .claude/ 안에 에이전트 팀 + 오케스트레이터 완성</code></pre>
+<p>이 한 번의 요청 뒤에서 하네스 메타 스킬(<code>/harness</code>)이 수행하는 과정은 다음과 같다:</p>
 <ol type="1">
-<li>사용자가 “책 집필을 자동화하고 싶다”고 요청한다</li>
-<li>하네스가 그 도메인을 분석한다</li>
-<li>필요한 에이전트들을 정의하고 (<code>.claude/agents/</code> 에 파일 생성)</li>
-<li>각 에이전트가 사용할 스킬을 만들고 (<code>.claude/skills/</code> 에 파일 생성)</li>
-<li>이들을 조율하는 오케스트레이터 스킬을 만든다</li>
+<li><strong>도메인 분석</strong>: 사용자의 요청에서 핵심 작업 유형을 식별한다</li>
+<li><strong>팀 아키텍처 설계</strong>: 작업을 전문 영역으로 분해하고, 적절한 아키텍처 패턴을 선택한다</li>
+<li><strong>에이전트 생성</strong>: 각 전문 영역에 맞는 에이전트를 정의한다 (<code>.claude/agents/</code> 에 파일 생성)</li>
+<li><strong>스킬 생성</strong>: 각 에이전트가 사용할 작업 절차를 만든다 (<code>.claude/skills/</code> 에 파일 생성)</li>
+<li><strong>오케스트레이터 생성</strong>: 팀 전체를 조율하는 상위 스킬을 만든다</li>
+<li><strong>검증</strong>: frontmatter, 트리거 키워드, 에이전트 간 참조 일관성을 확인한다</li>
 </ol>
 <p>결과적으로 하네스가 생성하는 것은 다음 세 가지다:</p>
 <pre><code>하네스의 산출물
 ├── 에이전트 정의 파일들    (.claude/agents/*.md)
 ├── 스킬 정의 파일들        (.claude/skills/*/SKILL.md)
 └── 통합 오케스트레이터     (.claude/skills/{팀명}/SKILL.md)</code></pre>
+<h3>인포그래픽: 메타 스킬이 하네스를 만드는 과정</h3>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <filter id="sh" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-opacity="0.1"/>
+    </filter>
+    <marker id="arw" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7f8c8d"/>
+    </marker>
+    <marker id="arwPurple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#8e44ad"/>
+    </marker>
+    <linearGradient id="metaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a5f5;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#9b59b6;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="agGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8d8ea;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#5ba4cf;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="skGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd6a5;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#f0a040;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="orGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a5f5c8;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#27ae60;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="#f8f9fa" rx="12"/>
+
+  <!-- Title -->
+  <text x="400" y="42" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2c3e50">메타 스킬이 하네스를 만드는 과정</text>
+  <line x1="230" y1="54" x2="570" y2="54" stroke="#bdc3c7" stroke-width="2"/>
+
+  <!-- Step 1: User Request -->
+  <rect x="60" y="85" width="200" height="70" rx="12" fill="#ecf0f1" filter="url(#sh)" stroke="#bdc3c7" stroke-width="1"/>
+  <text x="160" y="112" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2c3e50">사용자 요청</text>
+  <text x="160" y="135" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#7f8c8d">"하네스 구성해줘"</text>
+
+  <!-- Arrow 1 -->
+  <line x1="260" y1="120" x2="310" y2="120" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arw)"/>
+
+  <!-- Step 2: Meta Skill -->
+  <rect x="320" y="75" width="200" height="90" rx="14" fill="url(#metaGrad)" filter="url(#sh)"/>
+  <text x="420" y="107" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="white">하네스 메타 스킬</text>
+  <text x="420" y="130" text-anchor="middle" font-family="sans-serif" font-size="11" fill="rgba(255,255,255,0.85)">/harness</text>
+  <text x="420" y="150" text-anchor="middle" font-family="sans-serif" font-size="11" fill="rgba(255,255,255,0.85)">스킬을 만드는 스킬</text>
+
+  <!-- Arrow 2: fan-out -->
+  <line x1="420" y1="165" x2="420" y2="195" stroke="#8e44ad" stroke-width="2" marker-end="url(#arwPurple)"/>
+
+  <!-- Phase labels -->
+  <text x="400" y="225" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#8e44ad">자동 생성</text>
+
+  <!-- Three output boxes -->
+  <!-- Agents -->
+  <rect x="60" y="250" width="200" height="120" rx="12" fill="url(#agGrad)" filter="url(#sh)"/>
+  <text x="160" y="278" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">에이전트 팀</text>
+  <text x="160" y="300" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2c3e50">.claude/agents/*.md</text>
+  <text x="160" y="322" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2c3e50">전문가 A, B, C, ...</text>
+  <text x="160" y="344" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#555">"누가 하는가"</text>
+
+  <!-- Skills -->
+  <rect x="300" y="250" width="200" height="120" rx="12" fill="url(#skGrad)" filter="url(#sh)"/>
+  <text x="400" y="278" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">스킬 정의</text>
+  <text x="400" y="300" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2c3e50">.claude/skills/*/SKILL.md</text>
+  <text x="400" y="322" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2c3e50">작업 절차, 도구, 규칙</text>
+  <text x="400" y="344" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#555">"어떻게 하는가"</text>
+
+  <!-- Orchestrator -->
+  <rect x="540" y="250" width="200" height="120" rx="12" fill="url(#orGrad)" filter="url(#sh)"/>
+  <text x="640" y="278" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">오케스트레이터</text>
+  <text x="640" y="300" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2c3e50">.claude/skills/{팀}/SKILL.md</text>
+  <text x="640" y="322" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2c3e50">Phase별 워크플로우</text>
+  <text x="640" y="344" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#555">"어떤 순서로 하는가"</text>
+
+  <!-- Fan-out arrows from meta skill -->
+  <line x1="370" y1="210" x2="160" y2="248" stroke="#8e44ad" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="420" y1="215" x2="400" y2="248" stroke="#8e44ad" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="470" y1="210" x2="640" y2="248" stroke="#8e44ad" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+  <!-- Result arrow -->
+  <rect x="200" y="410" width="400" height="55" rx="12" fill="#2c3e50" filter="url(#sh)"/>
+  <text x="400" y="435" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="white">완성된 하네스</text>
+  <text x="400" y="453" text-anchor="middle" font-family="sans-serif" font-size="11" fill="rgba(255,255,255,0.7)">에이전트 팀이 오케스트레이터의 지휘 아래 협업</text>
+
+  <!-- Arrows to result -->
+  <line x1="160" y1="370" x2="300" y2="410" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#arw)"/>
+  <line x1="400" y1="370" x2="400" y2="408" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#arw)"/>
+  <line x1="640" y1="370" x2="500" y2="410" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#arw)"/>
+</svg>
+
 <p>왜 “하네스”라는 이름일까? 하네스는 원래 여러 줄의 케이블이나 끈을 하나로 묶어 관리하는 장치를 뜻한다. 자동차의 와이어 하네스가 수십 개의 전선을 체계적으로 정리하듯, 이 하네스는 여러 에이전트와 스킬을 하나의 체계로 묶어준다.</p>
+<p><strong>메타 스킬이 중요한 이유는 진입 장벽을 낮추기 때문이다.</strong> 에이전트 정의, 스킬 정의, 오케스트레이터를 직접 작성하려면 이 책의 Part 2 전체를 이해해야 한다. 하지만 메타 스킬을 사용하면 “하네스 구성해줘”라는 한마디로 시작할 수 있다. 물론 자동 생성된 결과를 검토하고 미세 조정하려면 수동 구성의 원리를 알아야 한다 — 이것이 이 책이 존재하는 이유다.</p>
 <hr />
 <h3 id="하네스의-3요소">하네스의 3요소</h3>
 <p>하네스를 구성하는 세 가지 요소를 정리하면 다음과 같다.</p>
@@ -1137,10 +1343,10 @@ Phase 5: [book-publisher]       → PDF 259p + 웹 뷰어</code></pre>
 <p>각 요소를 하나씩 살펴보자.</p>
 <h4 id="요소-1-에이전트-정의">요소 1: 에이전트 정의</h4>
 <p>에이전트 정의는 Chapter 1에서 본 것과 동일하다. 다만 팀으로 묶일 때는 <strong>협업 섹션</strong>이 중요해진다. 어떤 에이전트에게서 입력을 받고, 어떤 에이전트에게 출력을 전달하는지 명시해야 한다.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## 협업</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`book-planner`</span>의 목차/명세를 입력으로 받음</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`book-editor`</span>가 작성된 챕터를 리뷰</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>리뷰 피드백에 따라 수정 반영</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## 협업</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`book-planner`</span>의 목차/명세를 입력으로 받음</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`book-editor`</span>가 작성된 챕터를 리뷰</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>리뷰 피드백에 따라 수정 반영</span></code></pre></div>
 <p>이 협업 정의가 없으면 에이전트는 자기 역할만 알고, 팀 내에서 자신의 위치를 모른다.</p>
 <h4 id="요소-2-스킬-정의">요소 2: 스킬 정의</h4>
 <p>개별 스킬은 에이전트가 참조하는 작업 절차다. 오케스트레이터와 구분하기 위해 <strong>개별 스킬</strong>이라 부르자. 예를 들어 <code>book-editor</code> 에이전트가 리뷰할 때 참조하는 체크리스트, <code>infographic-creator</code>가 SVG를 생성할 때 따르는 디자인 가이드 등이 여기에 해당한다.</p>

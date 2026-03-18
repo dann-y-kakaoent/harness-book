@@ -30,6 +30,7 @@ CHAPTER_FILES = [
 
 # SVG title map (filename -> display title)
 SVG_TITLES = {
+    "infographic-ch00-meta-skill-flow.svg": "메타 스킬이 하네스를 만드는 과정",
     "infographic-ch01-agent-vs-skill.svg": "Agent vs Skill 비교 다이어그램",
     "infographic-ch02-harness-overview.svg": "하네스 구성 요소 전체 맵",
     "infographic-ch03-architecture-patterns.svg": "4가지 패턴 흐름도 + 선택 가이드",
