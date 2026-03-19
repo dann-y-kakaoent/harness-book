@@ -55,7 +55,21 @@
 
 ### 메타 스킬의 실제 내용
 
-아래는 이 책을 만든 하네스 메타 스킬(`~/.claude/skills/harness/SKILL.md`)의 실제 내용이다. 이 파일 하나가 위의 전체 과정을 정의한다.
+아래는 실제로 사용되는 하네스 메타 스킬의 전체 내용이다. 3개의 파일로 구성된다.
+
+#### 디렉토리 구조
+
+```
+~/.claude/skills/harness/
+├── SKILL.md                        # 메타 스킬 본체
+└── references/
+    ├── agent-design-patterns.md    # 아키텍처 패턴 레퍼런스
+    └── team-examples.md            # 팀 구성 예시
+```
+
+프로젝트별이 아니라 **사용자의 홈 디렉토리**(`~/.claude/`)에 위치한다. 어떤 프로젝트에서든 "책을 집필해줘", "리서치 팀을 구성해줘"라고 요청하면 이 메타 스킬이 트리거되어 해당 도메인에 맞는 하네스를 자동 생성한다.
+
+#### 파일 1: SKILL.md (메타 스킬 본체)
 
 ```markdown
 ---
@@ -83,7 +97,7 @@ description: "하네스를 구성합니다. 전문 에이전트를 정의하며,
 
 ### Phase 2: 팀 아키텍처 설계
 1. 작업을 전문 영역으로 분해
-2. 에이전트 팀 구조 결정 (아키텍처 패턴 참조)
+2. 에이전트 팀 구조 결정 (아키텍처 패턴은 `references/agent-design-patterns.md` 참조)
    - **파이프라인**: 순차 의존 작업
    - **팬아웃/팬인**: 병렬 독립 작업
    - **전문가 풀**: 상황별 선택 호출
@@ -95,17 +109,45 @@ description: "하네스를 구성합니다. 전문 에이전트를 정의하며,
    - 재사용성이 높으면 분리
 
 ### Phase 3: 에이전트 정의 생성
-각 에이전트를 `프로젝트/.claude/agents/{name}.md`에 정의.
+각 에이전트를 `프로젝트/.claude/agents/{name}.md`에 정의:
+
+​```markdown
+---
+name: agent-name
+description: "역할 설명. 트리거 키워드."
+model: sonnet
+---
+
+# Agent Name — 역할 요약
+
+당신은 [도메인]의 [역할] 전문가입니다.
+
+## 핵심 역할
+## 작업 원칙
+## 출력 형식
+## 협업
+​```
+
+**에이전트 생성 원칙:**
+- shared/ 규칙(기본 지침, 코딩 원칙 등)을 에이전트 작업 원칙에 반영
+- "Always respond in Korean" 등 기본 지침을 포함
+- 출력 형식은 구체적으로 (마크다운 예시 포함)
 
 ### Phase 4: 스킬 생성
 각 에이전트가 사용할 스킬을 `프로젝트/.claude/skills/{name}/SKILL.md`에 생성.
 
+**스킬 생성 원칙:**
+- 에이전트 1개 ↔ 스킬 1~N개 (1:1 또는 1:다)
+- 여러 에이전트가 공유하는 스킬도 가능
+- 스킬은 "어떻게 하는가"를 담고, 에이전트는 "누가 하는가"를 담는다
+- 레퍼런스가 크면 `references/` 하위에 분리
+
 ### Phase 5: 통합 스킬 (오케스트레이터)
 팀 전체를 조율하는 상위 스킬 생성:
-- 에이전트 구성 테이블
+- 시나리오별 에이전트 구성 테이블
 - Phase별 워크플로우 (병렬/순차)
 - 에이전트 간 데이터 흐름
-- 각 Phase의 검증 기준 명시
+- 각 Phase의 **검증 기준** 명시
 
 ### Phase 6: 검증
 - [ ] 모든 에이전트 파일이 올바른 위치에 있는지 확인
@@ -113,9 +155,137 @@ description: "하네스를 구성합니다. 전문 에이전트를 정의하며,
 - [ ] 에이전트의 description에 트리거 키워드가 포함되어 있는지 확인
 - [ ] 에이전트 간 참조 일관성 확인
 - [ ] 오케스트레이터 스킬에서 모든 에이전트가 참조되는지 확인
+- [ ] 커맨드(`.claude/commands/`)가 생성되지 않았는지 확인
+
+## 산출물 체크리스트
+
+- [ ] `프로젝트/.claude/agents/` — 에이전트 정의 파일들
+- [ ] `프로젝트/.claude/skills/` — 스킬 파일들 (SKILL.md + references/)
+- [ ] 통합 오케스트레이터 스킬 1개
+- [ ] `.claude/commands/` — 아무것도 생성하지 않음
+- [ ] 기존 에이전트/스킬과 충돌 없음
+
+## 참고
+
+- 아키텍처 패턴: `references/agent-design-patterns.md`
+- 팀 구성 예시: `references/team-examples.md`
 ```
 
-이 마크다운 파일이 `~/.claude/skills/harness/` 에 위치한다. 프로젝트별이 아니라 **사용자의 홈 디렉토리**에 있으므로, 어떤 프로젝트에서든 "책을 집필해줘", "리서치 팀을 구성해줘"라고 요청하면 이 메타 스킬이 트리거되어 해당 도메인에 맞는 하네스를 자동 생성한다.
+#### 파일 2: references/agent-design-patterns.md (아키텍처 패턴)
+
+메타 스킬이 Phase 2에서 팀 구조를 결정할 때 참조하는 패턴 레퍼런스다.
+
+```markdown
+# Agent Team Design Patterns
+
+## 에이전트 팀 아키텍처 유형
+
+### 1. 파이프라인 (Pipeline)
+순차적 작업 흐름. 이전 에이전트의 출력이 다음 에이전트의 입력.
+
+​```
+[분석] → [설계] → [구현] → [검증]
+​```
+
+예시: 소설 집필 — 세계관 → 캐릭터 → 플롯 → 집필 → 편집
+
+### 2. 팬아웃/팬인 (Fan-out/Fan-in)
+병렬 처리 후 결과 통합. 독립적 작업을 동시 수행.
+
+​```
+         ┌→ [전문가A] ─┐
+[분배] → ├→ [전문가B] ─┼→ [통합]
+         └→ [전문가C] ─┘
+​```
+
+예시: 종합 리뷰 — 문체/과학/일관성 동시 검증 → 통합 보고
+
+### 3. 전문가 풀 (Expert Pool)
+상황에 따라 적절한 전문가를 선택 호출.
+
+​```
+[라우터] → { 전문가A | 전문가B | 전문가C }
+​```
+
+예시: 소설 도메인 — 세계관/캐릭터/플롯 중 필요한 전문가만 호출
+
+### 4. 생성-검증 (Producer-Reviewer)
+생성 에이전트와 검증 에이전트가 쌍으로 동작.
+
+​```
+[생성] → [검증] → (문제시) → [생성] 재실행
+​```
+
+예시: 웹툰 — artist 생성 → reviewer 검수 → 문제 패널 재생성
+
+## 에이전트 분리 기준
+
+| 기준 | 분리 | 통합 |
+|------|------|------|
+| 전문성 | 영역이 다르면 분리 | 영역이 겹치면 통합 |
+| 병렬성 | 독립 실행 가능하면 분리 | 순차 종속이면 통합 고려 |
+| 컨텍스트 | 컨텍스트 부담이 크면 분리 | 가볍고 빠르면 통합 |
+| 재사용성 | 다른 팀에서도 쓰면 분리 | 이 팀에서만 쓰면 통합 고려 |
+
+## 스킬 vs 에이전트 구분
+
+| 구분 | 스킬 (Skill) | 에이전트 (Agent) |
+|------|-------------|-----------------|
+| 정의 | 절차적 지식 + 도구 번들 | 전문가 페르소나 + 행동 원칙 |
+| 위치 | `.claude/skills/` | `.claude/agents/` |
+| 트리거 | 사용자 요청 키워드 매칭 | Agent 도구로 명시적 호출 |
+| 용도 | "어떻게 하는가" | "누가 하는가" |
+```
+
+#### 파일 3: references/team-examples.md (팀 구성 예시)
+
+메타 스킬이 도메인별 팀 구성을 참고할 때 사용하는 예시 모음이다.
+
+```markdown
+# Agent Team Examples
+
+## 예시 1: SF 소설 집필 팀
+
+| 에이전트 | 역할 | 스킬 |
+|---------|------|------|
+| worldbuilder | 세계관 구축 | world-setting |
+| character-designer | 캐릭터 설계 | character-profile |
+| plot-architect | 플롯 구조 | outline |
+| prose-stylist | 문체 편집 | write-scene, review-chapter |
+| science-consultant | 과학 검증 | science-check |
+| continuity-manager | 일관성 검증 | consistency-check |
+
+### 팀 아키텍처
+​```
+Phase 1 (병렬): worldbuilder + character-designer + plot-architect
+Phase 2 (순차): prose-stylist (집필)
+Phase 3 (병렬): prose-stylist + science-consultant + continuity-manager (리뷰)
+​```
+
+## 예시 2: 웹툰 제작 팀
+
+| 에이전트 | 역할 | 스킬 |
+|---------|------|------|
+| webtoon-artist | 패널 이미지 생성 | generate-webtoon |
+| webtoon-reviewer | 품질 검수 | review-webtoon, fix-webtoon-panel |
+
+### 팀 아키텍처
+​```
+Phase 1: webtoon-artist (패널 생성)
+Phase 2: webtoon-reviewer (검수)
+Phase 3: webtoon-artist (문제 패널 재생성)
+​```
+
+## 예시 3: 리서치 팀
+
+| 에이전트 | 역할 |
+|---------|------|
+| web-researcher | 웹 검색/수집 |
+| analyst | 데이터 분석/종합 |
+| report-writer | 보고서 작성 |
+```
+
+이 3개 파일이 메타 스킬의 전부다. SKILL.md가 워크플로우(6단계)를 정의하고, references의 두 파일이 팀 설계 시 참조하는 **패턴 사전**과 **예시 모음** 역할을 한다. 메타 스킬은 이 레퍼런스를 읽고 도메인에 적합한 패턴과 팀 구조를 결정한다.
 
 ---
 
