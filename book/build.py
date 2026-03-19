@@ -341,7 +341,13 @@ def build_web():
         ch_html = replace_infographic_markers(ch_html)
         ch_id = ch_key  # ch00, ch01, ... 파일명 기반 ID
         chapters_html.append(f'<section id="{ch_id}" class="chapter">{ch_html}</section>')
-        short_title = title.split(":")[0] if ":" in title else title
+        # "Chapter N: 제목" → "0N 제목"
+        ch_num = ch_key[2:]  # "00", "01", ...
+        if ":" in title:
+            ch_title = title.split(":", 1)[1].strip()
+        else:
+            ch_title = title.replace(f"Chapter {ch_num.lstrip('0') or '0'}", "").strip(" —-:")
+        short_title = f"{ch_num} {ch_title}" if ch_title else f"{ch_num}"
         toc_items.append(f'<a href="#{ch_id}" onclick="showChapter({i})">{short_title}</a>')
 
     toc_html = "\n".join(toc_items)
