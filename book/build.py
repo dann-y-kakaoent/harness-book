@@ -15,17 +15,16 @@ WEB_DIR = OUTPUT_DIR / "web"
 CHAPTER_FILES = [
     "ch00-harness-at-a-glance.md",
     "ch01-agent-and-skill.md",
-    "ch02-harness-concept.md",
+    "ch02-harness-and-meta-skill.md",
     "ch03-architecture-patterns.md",
-    "ch04-writing-agents.md",
-    "ch05-writing-skills.md",
-    "ch06-orchestrator-skill.md",
-    "ch07-case-book-writing.md",
-    "ch08-case-research-team.md",
-    "ch09-case-code-generation.md",
-    "ch10-harness-meta-skill.md",
-    "ch11-debugging.md",
-    "ch12-design-your-own.md",
+    "ch04-generated-structure.md",
+    "ch05-orchestrator-and-team.md",
+    "ch06-case-book-writing.md",
+    "ch07-case-research-team.md",
+    "ch08-case-code-generation.md",
+    "ch09-debugging.md",
+    "ch10-design-your-own.md",
+    "ch11-meta-skill-customization.md",
 ]
 
 # SVG title map (filename -> display title)

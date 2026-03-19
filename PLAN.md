@@ -1,61 +1,75 @@
-# 하네스 엔지니어링 실전 가이드 — 책 집필 프로젝트
+# 책 구조 재편 — 메타 스킬 중심으로 전환
 
 ## 배경
 
-ai-toolkit(구 prompts) 프로젝트에서 하네스 메타 스킬(`/harness`)을 테스트하기 위해 시작된 책 집필 프로젝트.
-`/harness`로 Agent 5명 + 오케스트레이터 Skill을 자동 생성하고, 12챕터 집필 + 리뷰 + 인포그래픽 + PDF + 웹뷰어까지 완성.
-이후 별도 프로젝트로 분리됨.
+현재 책이 "직접 만드는 법" 중심으로 서술되어 있어, 사용자가 메타 스킬로 자동 생성한다는 핵심과 괴리가 있음.
+메타 스킬을 진입점으로 삼고, 나머지 챕터는 "자동 생성된 결과의 구조 이해 + 커스터마이징"으로 재편.
 
-### 현재 산출물 상태
-- 12개 챕터 집필 완료 (book/chapters/)
-- 리뷰 완료 (CRITICAL 1건 수정, WARNING 13건)
-- SVG 인포그래픽 7개 (book/assets/)
-- PDF 259페이지 (book/output/pdf/)
-- 웹 뷰어 (book/output/web/index.html)
-- 빌드 스크립트 (book/build.py)
+## 새 구조 (12ch → 11ch)
 
-### 에이전트/스킬 파일 위치
-현재 루트에 에이전트 파일이 흩어져 있음. 프로젝트 초기화 시 `.claude/` 구조로 배치 필요.
+```
+Ch00: 하네스 한눈에 보기 (유지, 메타 스킬 강조)
 
----
+Part 1: 핵심 개념 (Ch01~02)
+  Ch01: Agent와 Skill 이해하기 (유지)
+  Ch02: 하네스와 메타 스킬 (기존 Ch02 + Ch10 핵심 통합)
+
+Part 2: 생성된 하네스의 구조 (Ch03~05)
+  Ch03: 4가지 아키텍처 패턴 (유지)
+  Ch04: 에이전트·스킬·오케스트레이터의 구조 (기존 Ch04+05+06 압축)
+  Ch05: 오케스트레이터와 팀 운영 (기존 Ch06 핵심)
+
+Part 3: 실전 사례 (Ch06~08)
+  Ch06: 책 집필 하네스 (← 기존 Ch07)
+  Ch07: 리서치 팀 하네스 (← 기존 Ch08)
+  Ch08: 코드 생성 하네스 (← 기존 Ch09)
+
+Part 4: 운영과 확장 (Ch09~11)
+  Ch09: 디버깅과 개선 (← 기존 Ch11)
+  Ch10: 나만의 하네스 설계하기 (← 기존 Ch12)
+  Ch11: 메타 스킬 커스터마이징 (← 기존 Ch10 심화)
+```
+
+## 매핑 테이블
+
+| 새 번호 | 원본 | 작업 |
+|---------|------|------|
+| Ch00 | Ch00 | 메타 스킬 섹션 보강 |
+| Ch01 | Ch01 | 유지 |
+| Ch02 | Ch02 + Ch10 핵심 | 메타 스킬 실행→생성 흐름 통합, "다음 챕터 미리보기" 수정 |
+| Ch03 | Ch03 | 유지, "다음 챕터 미리보기" 수정 |
+| Ch04 | Ch04 + Ch05 + Ch06 일부 | 압축: "생성된 구조" 관점으로 재작성, 실습 제거 |
+| Ch05 | Ch06 핵심 | 오케스트레이터 중심, "생성된 것 이해" 관점 |
+| Ch06 | Ch07 | 번호만 변경, 내부 참조 수정 |
+| Ch07 | Ch08 | 번호만 변경, 내부 참조 수정 |
+| Ch08 | Ch09 | 번호만 변경, 내부 참조 수정 |
+| Ch09 | Ch11 | 번호만 변경, 내부 참조 수정 |
+| Ch10 | Ch12 | 번호만 변경, 내부 참조 수정 |
+| Ch11 | Ch10 심화 | 메타 스킬 커스터마이징 부분 추출 |
 
 ## TODO
 
-### Phase 0: 프로젝트 초기화
-- [x] git init
-- [x] `.claude/agents/` 디렉토리 생성 후 에이전트 파일 이동
-  - book-planner.md, chapter-writer.md, book-editor.md, infographic-creator.md, book-publisher.md
-- [x] `.claude/skills/book-writer/` 디렉토리 생성 후 오케스트레이터 이동
-  - book-writer/SKILL.md → .claude/skills/book-writer/SKILL.md
-- [x] `/add-permission` 실행 (Bash 허용 규칙 설정)
-- [x] .gitignore 작성
+### Phase 1: 파일 리네이밍 및 기본 구조
+- [x] 기존 챕터 파일을 tmp/에 백업
+- [x] 새 번호로 파일 리네이밍 (Ch06~Ch10)
+- [x] 재작성 대상 원본을 .old로 보존
+- [x] build.py CHAPTER_FILES 업데이트
+- [x] outline.md 새 구조로 업데이트
 
-### Phase 0.5: Chapter 0 추가
-- [x] ch00-harness-at-a-glance.md 작성 (핵심 개념 서두 배치)
-- [x] outline.md에 Ch00 추가
+### Phase 2: 핵심 챕터 재작성
+- [ ] Ch00: 메타 스킬을 진입점으로 강조 ("실행→생성→작업 시작" 흐름)
+- [ ] Ch02: 기존 Ch02 + Ch10 핵심 통합 (메타 스킬 실행 과정 상세)
+- [ ] Ch04: 기존 Ch04+05+06 압축 ("생성된 구조" 관점, 커스터마이징 포인트)
+- [ ] Ch05: 기존 Ch06에서 오케스트레이터 핵심 추출
+- [ ] Ch11: 기존 Ch10 심화 부분 추출 (메타 스킬 커스터마이징)
 
-### Phase 1: 리뷰 WARNING 수정
-- [x] review-part1-2.md의 WARNING 6건 수정
-  - W4-1: Ch04 중첩 코드 블록 zero-width space 트릭 설명 추가
-  - W5-1: Ch05 code-reviewer 예시를 Ch04 완성본과 일치
-  - W6-1: Ch06 오케스트레이터에 최대 반복 횟수(2회) 추가
-  - W-Cross-1: Ch04 "네 가지" → "다섯 가지" 수정
-  - W-Cross-2: Ch05 INFO → SUGGESTION 용어 통일
-  - W2-1: "스스로"는 올바른 맞춤법이므로 수정 불필요
-- [x] review-part3-4.md의 WARNING 7건 수정
-  - Ch07-W1: 추측형 "나왔을 것이다" → "나올 수 있다" 수정
-  - Ch08-W1: "SubAgent" → "서브 에이전트" 전체 통일
-  - Ch09-W1: Phase 2/3 코드 타임라인 설명 추가
-  - Ch09-W2: Java/Kotlin `claim.as()` → `claim.asString()` 수정
-  - Ch10-W1: Phase 4 소제목에 "(이 예제에서는 별도 스킬 미생성)" 명시
-  - Ch11-W1: 디버깅 로그 날짜 하드코딩 → 플레이스홀더 변경
-  - Ch12-W1: 마지막 챕터에 "부록 안내" 섹션 추가
+### Phase 3: 번호 변경 챕터 내부 참조 수정
+- [ ] Ch06~Ch10: 내부의 "Chapter N" 참조를 새 번호로 일괄 수정
+- [ ] "다음 챕터 미리보기" 섹션 전체 수정
 
-### Phase 2: GitHub Pages 배포
-- [x] GitHub 저장소 생성 (moongtook/harness-book, public)
-- [x] book/output/web/index.html을 GitHub Pages로 배포 (https://moongtook.github.io/harness-book/)
-- [x] README.md 작성 (프로젝트 소개 + 온라인 뷰어 링크)
-
-### Phase 3: PDF 재빌드
-- [x] WARNING 수정 반영 후 `python3 book/build.py`로 재빌드
-- [x] PDF 263p (1.0MB) + 웹 뷰어 (797KB) 최종 검증 완료
+### Phase 4: 인포그래픽/빌드/배포
+- [ ] SVG 파일명 변경 (ch07→ch06 등)
+- [ ] 마크다운 내 INFOGRAPHIC 마커 업데이트
+- [ ] build.py SVG_TITLES 업데이트
+- [ ] 빌드 검증 (웹 + PDF)
+- [ ] 양쪽 GitHub push + Pages 배포
